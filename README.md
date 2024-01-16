@@ -1,2 +1,2 @@
 # ScoutApp2024
-Scouting App for 2024 robotics crescendo season
+Scouting App for the 2024 Robotics Crescendo Season

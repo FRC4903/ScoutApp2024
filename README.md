@@ -1,7 +1,7 @@
 # ScoutApp2024
 Scouting App for the 2024 Robotics Crescendo Season
 
-Made by Ali, Mathew, Gurdit, Divyam
+Made by Mathew, Gurdit, Divyam, Ali
 
 ## TO DO
 - [ ] Learn how to code

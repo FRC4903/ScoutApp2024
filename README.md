@@ -9,4 +9,5 @@ Made by Ali, Mathew, Gurdit, Divyam
 - [ ] Work on text input and printing out info
 - [ ] Understand the data sending process
 - [ ] Figure out how a QR Code is formed and displayed
+- [ ] Add all the buttons/GUI elements (checkboxes, text input, etc)
 - [ ] Make more TODOs

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PreGame extends StatelessWidget {
+class PostGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'PreGame',
+        'PostGame',
         style: TextStyle(fontSize: 24),
       ),
     );

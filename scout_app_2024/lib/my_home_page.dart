@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'page1.dart';
-import 'page2.dart';
+import 'Auto.dart';
+import 'PostGame.dart';
+import 'PreGame.dart';
+import 'TeleOp.dart';
+import 'Endgame.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -25,29 +28,54 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         children: [
-          Page1(),
-          Page2(),
+          PreGame(),
+          Auto(),
+          TeleOp(),
+          Endgame(),
+          PostGame(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentPage,
-        onTap: (index) {
-          _pageController.animateToPage(
-            index,
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-          );
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Page 1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Page 2',
-          ),
-        ],
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          // Define the default text style
+          textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(
+                  color: Colors.grey, // Default text color
+                ),
+              ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentPage,
+          onTap: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          },
+          items: const[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PreGame',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Auto',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Tele Op',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'EndGame',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PostGame',
+            ),
+          ],
+        ),
       ),
     );
   }

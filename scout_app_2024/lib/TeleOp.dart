@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Page2 extends StatelessWidget {
+class TeleOp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Page 2',
+        'Tele Op',
         style: TextStyle(fontSize: 24),
       ),
     );

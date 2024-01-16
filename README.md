@@ -8,4 +8,5 @@ Made by Ali, Mathew, Gurdit, Divyam
 - [ ] Understand the data sending process
 - [ ] Figure out how a QR Code is formed and displayed
 - [ ] Learn how to code
+- [ ] Learn how to flutter
 - [ ] Make more TODOs

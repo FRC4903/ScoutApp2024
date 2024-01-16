@@ -4,9 +4,9 @@ Scouting App for the 2024 Robotics Crescendo Season
 Made by Ali, Mathew, Gurdit, Divyam
 
 ## TO DO
-- [ ] Figure out how to display multiple pages that slide
+- [ ] Learn how to code
+- [ ] Figure out how to switch through multiple slides
+- [ ] Work on text input and printing out info
 - [ ] Understand the data sending process
 - [ ] Figure out how a QR Code is formed and displayed
-- [ ] Learn how to code
-- [ ] Learn how to flutter
 - [ ] Make more TODOs

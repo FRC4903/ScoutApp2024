@@ -53,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
             curve: Curves.easeInOut,
           );
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'PreGame',
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PreGame',
               backgroundColor: Colors.blue,
             ),
             BottomNavigationBarItem(
@@ -78,9 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.home),
               label: 'PostGame',
               backgroundColor: Colors.blue,
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
     );
   }
 }

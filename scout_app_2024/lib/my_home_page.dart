@@ -30,30 +30,27 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
-<<<<<<< Updated upstream
-        children:[
+        children: const [
           PreGame(
-                  inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          Auto(   inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          TeleOp( inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          Endgame(inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          PostGame(inputs: inputs,
-                  callback: (value) => setState(() => inputs = value))
-=======
-        children: [
-          PreGame(),
+            inputs: null,
+            callback: null,
+          ),
           Auto(
             inputs: null,
             callback: null,
           ),
-          TeleOp(),
-          Endgame(),
-          PostGame(),
->>>>>>> Stashed changes
+          TeleOp(
+            inputs: null,
+            callback: null,
+          ),
+          Endgame(
+            inputs: null,
+            callback: null,
+          ),
+          PostGame(
+            inputs: null,
+            callback: null,
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -65,34 +62,34 @@ class _MyHomePageState extends State<MyHomePage> {
             curve: Curves.easeInOut,
           );
         },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PreGame',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Auto',
-              backgroundColor: Colors.orange,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Tele Op',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'EndGame',
-              backgroundColor: Colors.orange,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PostGame',
-              backgroundColor: Colors.blue,
-            ),
-          ],
-        ),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PreGame',
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Auto',
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Tele Op',
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'EndGame',
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PostGame',
+            backgroundColor: Colors.blue,
+          ),
+        ],
+      ),
     );
   }
 }

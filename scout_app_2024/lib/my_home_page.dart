@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'Auto.dart';
-import 'PostGame.dart';
-import 'PreGame.dart';
+import 'package:scout_app_2024/Auto.dart';
+import 'package:scout_app_2024/PostGame.dart';
+import 'package:scout_app_2024/PreGame.dart';
 import 'TeleOp.dart';
 import 'Endgame.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentPage = 0;
-
+  var inputs = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page Slider App'),
+        title: const Text('Page Slider App'),
       ),
       body: PageView(
         controller: _pageController,
@@ -27,55 +30,52 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
-        children: [
-          PreGame(),
-          Auto(),
-          TeleOp(),
-          Endgame(),
-          PostGame(),
+        children:[
+          PreGame(
+                  inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          Auto(   inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          TeleOp( inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          Endgame(inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          PostGame(inputs: inputs,
+                  callback: (value) => setState(() => inputs = value))
         ],
       ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          // Define the default text style
-          textTheme: Theme.of(context).textTheme.copyWith(
-                caption: TextStyle(
-                  color: Colors.grey, // Default text color
-                ),
-              ),
-        ),
-        child: BottomNavigationBar(
-          currentIndex: _currentPage,
-          onTap: (index) {
-            _pageController.animateToPage(
-              index,
-              duration: Duration(milliseconds: 500),
-              curve: Curves.easeInOut,
-            );
-          },
-          items: const[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PreGame',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Auto',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Tele Op',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'EndGame',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PostGame',
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentPage,
+        onTap: (index) {
+          _pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PreGame',
+            backgroundColor: Colors.black
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Auto',
+          ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'TeleOp',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'EndGame',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PostGame',
+          ),
+        ],
       ),
     );
   }

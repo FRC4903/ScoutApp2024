@@ -57,23 +57,27 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'PreGame',
-            backgroundColor: Colors.black
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Auto',
-          ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'TeleOp',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'EndGame',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'PostGame',
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Auto',
+              backgroundColor: Colors.orange,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Tele Op',
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'EndGame',
+              backgroundColor: Colors.orange,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PostGame',
+              backgroundColor: Colors.blue,
           ),
         ],
       ),

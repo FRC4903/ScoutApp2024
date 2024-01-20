@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
+<<<<<<< Updated upstream
         children:[
           PreGame(
                   inputs: inputs,
@@ -42,6 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   callback: (value) => setState(() => inputs = value)),
           PostGame(inputs: inputs,
                   callback: (value) => setState(() => inputs = value))
+=======
+        children: [
+          PreGame(),
+          Auto(
+            inputs: null,
+            callback: null,
+          ),
+          TeleOp(),
+          Endgame(),
+          PostGame(),
+>>>>>>> Stashed changes
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

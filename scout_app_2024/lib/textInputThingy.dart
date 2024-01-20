@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 class TextInputWidget extends StatefulWidget {
   final Function(String) callback;
 
-  TextInputWidget(this.callback);
+  const TextInputWidget(this.callback, {super.key});
 
   @override
   _TextInputWidgetState createState() => _TextInputWidgetState();
@@ -26,15 +26,15 @@ class _TextInputWidgetState extends State<TextInputWidget> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-        controller: this.controller,
+        controller: controller,
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.message),
+            prefixIcon: const Icon(Icons.message),
             labelText: "Type a message:",
             suffixIcon: IconButton(
-              icon: Icon(Icons.send),
+              icon: const Icon(Icons.send),
               splashColor: Colors.blue,
               tooltip: "Post message",
-              onPressed: this.click,
+              onPressed: click,
             )));
   }
 }

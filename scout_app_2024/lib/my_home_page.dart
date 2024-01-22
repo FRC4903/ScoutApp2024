@@ -16,7 +16,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  var inputs = {};
+  var inputs = {
+    'team': '',
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,27 +32,23 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
-        children: const [
+        children: [
           PreGame(
-            inputs: null,
-            callback: null,
-          ),
+            inputs: inputs,
+            callback:  (value) => setState(() => inputs = value)),
+          
           Auto(
             inputs: null,
-            callback: null,
-          ),
+            callback: (value) => setState(() => inputs = value)),
           TeleOp(
             inputs: null,
-            callback: null,
-          ),
+            callback:  (value) => setState(() => inputs = value)),
           Endgame(
             inputs: null,
-            callback: null,
-          ),
+            callback:  (value) => setState(() => inputs = value)),
           PostGame(
             inputs: null,
-            callback: null,
-          ),
+            callback:  (value) => setState(() => inputs = value as Map<String, String>)), 
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

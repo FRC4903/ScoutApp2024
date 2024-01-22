@@ -36,18 +36,17 @@ class _MyHomePageState extends State<MyHomePage> {
           PreGame(
             inputs: inputs,
             callback:  (value) => setState(() => inputs = value)),
-          
           Auto(
-            inputs: null,
+            inputs: inputs,
             callback: (value) => setState(() => inputs = value)),
-          TeleOp(
-            inputs: null,
+          MyStatefulWidget(
+            inputs: inputs,
             callback:  (value) => setState(() => inputs = value)),
           Endgame(
-            inputs: null,
+            inputs: inputs,
             callback:  (value) => setState(() => inputs = value)),
           PostGame(
-            inputs: null,
+            inputs: inputs,
             callback:  (value) => setState(() => inputs = value as Map<String, String>)), 
         ],
       ),

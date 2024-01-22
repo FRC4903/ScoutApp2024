@@ -16,7 +16,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  var inputs = {};
+  var inputs = {
+    'team': '',
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,18 +32,22 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
-        children: const [
+        children: [
           PreGame(
-                  inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          Auto(   inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          MyStatefulWidget( inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          Endgame(inputs: inputs,
-                  callback: (value) => setState(() => inputs = value)),
-          PostGame(inputs: inputs,
-                  callback: (value) => setState(() => inputs = value))
+            inputs: inputs,
+            callback:  (value) => setState(() => inputs = value)),
+          Auto(
+            inputs: inputs,
+            callback: (value) => setState(() => inputs = value)),
+          MyStatefulWidget(
+            inputs: inputs,
+            callback:  (value) => setState(() => inputs = value)),
+          Endgame(
+            inputs: inputs,
+            callback:  (value) => setState(() => inputs = value)),
+          PostGame(
+            inputs: inputs,
+            callback:  (value) => setState(() => inputs = value as Map<String, String>)), 
         ],
       ),
 <<<<<<< Updated upstream
@@ -58,25 +64,25 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'PreGame',
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.smart_toy),
             label: 'Auto',
             backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.person),
             label: 'Tele Op',
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.yellow,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.timelapse),
             label: 'EndGame',
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.qr_code_2),
             label: 'PostGame',
             backgroundColor: Colors.blue,
           ),

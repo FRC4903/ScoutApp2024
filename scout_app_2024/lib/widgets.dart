@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-typedef IntCallback = void Function(
-    int value); //callback for an integer value taken as a parameter by increment widget
-typedef StringCallback = void Function(
-    String
-        value); //callback for a string value taken as a parameter by textinput widget
+typedef IntCallback = void Function(int value);
+typedef StringCallback = void Function(String value);
+typedef BoolCallback = void Function(bool value);
 
 class Increment extends StatefulWidget {
-  //increment values
-  const Increment(
-      {super.key, required this.title, required this.callback, this.value = 0});
+  const Increment({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.value = 0,
+  }) : super(key: key);
 
   final String title;
   final IntCallback callback;
@@ -20,67 +21,74 @@ class Increment extends StatefulWidget {
 }
 
 class IncrementState extends State<Increment> {
-  //state of the increment object (since it updates as user interacts)
-
   int value = 0;
 
   @override
   void initState() {
     value = widget.value;
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            color: Color.fromARGB(144, 255, 255, 255),
-            borderRadius: BorderRadius.circular(9.0),
-            border: Border.all(
-              color: Colors.black,
-              width: 2.0,
-            )),
-        //container for the widget
-        width: 250,
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(144, 255, 255, 255),
+        borderRadius: BorderRadius.circular(9.0),
+        border: Border.all(
+          color: Colors.black,
+          width: 2.0,
+        ),
+      ),
+      width: 250,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Text(
               widget.title,
               style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.none),
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+              ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(5.0),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                      onPressed: decrement,
-                      icon: const Icon(
-                        Icons.remove_circle_outline,
-                        size: 40,
-                      )),
-                  Text(
-                    '$value',
-                    style: const TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
-                        decoration: TextDecoration.none),
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: decrement,
+                  icon: const Icon(
+                    Icons.remove_circle_outline,
+                    size: 40,
                   ),
-                  IconButton(
-                      onPressed: increment,
-                      icon: const Icon(
-                        Icons.add_circle_outline,
-                        size: 40,
-                      )),
-                ]),
-          )
-        ]));
+                ),
+                Text(
+                  '$value',
+                  style: const TextStyle(
+                    fontSize: 40,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+                IconButton(
+                  onPressed: increment,
+                  icon: const Icon(
+                    Icons.add_circle_outline,
+                    size: 40,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void increment() {
@@ -101,31 +109,31 @@ class IncrementState extends State<Increment> {
 }
 
 class TextInput extends StatefulWidget {
-  //increment objects
-  const TextInput(
-      {super.key,
-      required this.title,
-      required this.callback,
-      this.initial = ''});
+  const TextInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = '',
+  }) : super(key: key);
 
   final String title;
   final StringCallback callback;
-  final initial;
+  final String initial;
 
   @override
   State<TextInput> createState() => TextState();
 }
 
 class TextState extends State<TextInput> {
-  //state of the increment object (since it updates as user interacts)
   String value = '';
-
-  TextEditingController textController = TextEditingController();
-  FocusNode focus = FocusNode();
+  late TextEditingController textController;
+  late FocusNode focus;
 
   @override
   void initState() {
+    super.initState();
     textController = TextEditingController(text: widget.initial);
+    focus = FocusNode();
     focus.addListener(() {
       if (!focus.hasFocus) {
         setText();
@@ -136,32 +144,36 @@ class TextState extends State<TextInput> {
   @override
   void dispose() {
     focus.removeListener(() {});
+    textController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(children: [
-      Container(
-        width: 500,
-        height: 100,
-        decoration: BoxDecoration(
-          color: Color.fromARGB(144, 255, 255, 255),
-          borderRadius: BorderRadius.circular(9.0),
-        ),
-        child: TextField(
-          focusNode: focus,
-          controller: textController,
-          style: TextStyle(height: 5),
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: '${widget.title}',
-            hintText: 'Enter comments here...',
+      child: Row(
+        children: [
+          Container(
+            width: 500,
+            height: 100,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(144, 255, 255, 255),
+              borderRadius: BorderRadius.circular(9.0),
+            ),
+            child: TextField(
+              focusNode: focus,
+              controller: textController,
+              style: const TextStyle(height: 5),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: widget.title,
+                hintText: 'Enter comments here...',
+              ),
+            ),
           ),
-        ),
+        ],
       ),
-    ]));
+    );
   }
 
   void setText() {
@@ -171,3 +183,52 @@ class TextState extends State<TextInput> {
     widget.callback(value);
   }
 }
+
+<<<<<<< Updated upstream
+class CheckboxInput extends StatefulWidget {
+  const CheckboxInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
+
+  final String title;
+  final BoolCallback callback;
+  final bool initial;
+
+  @override
+  State<CheckboxInput> createState() => CheckboxInputState();
+}
+
+class CheckboxInputState extends State<CheckboxInput> {
+  late bool value;
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.initial;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Checkbox(
+            value: value,
+            onChanged: (newValue) {
+              setState(() {
+                value = newValue!;
+              });
+              widget.callback(value);
+            },
+          ),
+          Text(widget.title),
+        ],
+      ),
+    );
+  }
+}
+=======
+>>>>>>> Stashed changes

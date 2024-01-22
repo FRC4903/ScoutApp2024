@@ -32,25 +32,16 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         children: const [
           PreGame(
-            inputs: null,
-            callback: null,
-          ),
-          Auto(
-            inputs: null,
-            callback: null,
-          ),
-          TeleOp(
-            inputs: null,
-            callback: null,
-          ),
-          Endgame(
-            inputs: null,
-            callback: null,
-          ),
-          PostGame(
-            inputs: null,
-            callback: null,
-          ),
+                  inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          Auto(   inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          MyStatefulWidget( inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          Endgame(inputs: inputs,
+                  callback: (value) => setState(() => inputs = value)),
+          PostGame(inputs: inputs,
+                  callback: (value) => setState(() => inputs = value))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Auto extends StatelessWidget {
+class Auto extends StatefulWidget {
   const Auto({super.key, required this.inputs, required this.callback});
+
   final inputs;
   final callback;
-  @override
+
+  State<Auto> createState() => Funkyauto();
+}
+
+class Funkyauto extends State<Auto> {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(

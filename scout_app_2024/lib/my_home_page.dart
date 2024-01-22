@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentPage = index;
           });
         },
-        children:[
+        children: const [
           PreGame(
                   inputs: inputs,
                   callback: (value) => setState(() => inputs = value)),
@@ -53,34 +53,34 @@ class _MyHomePageState extends State<MyHomePage> {
             curve: Curves.easeInOut,
           );
         },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PreGame',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Auto',
-              backgroundColor: Colors.orange,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Tele Op',
-              backgroundColor: Colors.blue,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'EndGame',
-              backgroundColor: Colors.orange,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'PostGame',
-              backgroundColor: Colors.blue,
-            ),
-          ],
-        ),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PreGame',
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Auto',
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Tele Op',
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'EndGame',
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'PostGame',
+            backgroundColor: Colors.blue,
+          ),
+        ],
+      ),
     );
   }
 }

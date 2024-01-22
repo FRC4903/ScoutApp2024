@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
+
 
 class PreGame extends StatelessWidget {
   const PreGame({super.key, required this.inputs, required this.callback});

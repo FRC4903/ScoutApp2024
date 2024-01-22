@@ -8,9 +8,27 @@ class Auto extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'Auto',
+        'Autonomous',
         style: TextStyle(fontSize: 24),
       ),
     );
   }
 }
+
+
+
+
+// class SampleTextInput extends StatefulWidget {
+//   const SampleTextInput({super.key});
+
+//   @override
+//   State<SampleTextInput> createState() => _SampleTextInputState();
+// }
+
+// class _SampleTextInputState extends State<SampleTextInput> {
+  
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Placeholder();
+//   }
+// }

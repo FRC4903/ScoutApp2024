@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   callback: (value) => setState(() => inputs = value)),
           Auto(   inputs: inputs,
                   callback: (value) => setState(() => inputs = value)),
-          TeleOp( inputs: inputs,
+          MyStatefulWidget( inputs: inputs,
                   callback: (value) => setState(() => inputs = value)),
           Endgame(inputs: inputs,
                   callback: (value) => setState(() => inputs = value)),

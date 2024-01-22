@@ -6,10 +6,12 @@ class Auto extends StatefulWidget {
   final inputs;
   final callback;
 
+  @override
   State<Auto> createState() => Funkyauto();
 }
 
 class Funkyauto extends State<Auto> {
+  @override
   Widget build(BuildContext context) {
     return const Center(
       child: Text(

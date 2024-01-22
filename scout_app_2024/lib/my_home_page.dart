@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   callback: (value) => setState(() => inputs = value))
         ],
       ),
+<<<<<<< Updated upstream
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPage,
         onTap: (index) {
@@ -80,6 +81,49 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.blue,
           ),
         ],
+=======
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          // Define the default text style
+          textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(
+                  color: const Color.fromARGB(255, 255, 0, 0), // Default text color
+                ),
+              ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentPage,
+          onTap: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          },
+          items: const[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PreGame',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Auto',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Tele Op',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'EndGame',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'PostGame',
+            ),
+          ],
+        ),
+>>>>>>> Stashed changes
       ),
     );
   }

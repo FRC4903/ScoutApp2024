@@ -8,13 +8,20 @@ class Endgame extends StatelessWidget {
   final callback;
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Endgame',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'EndGame',
+          style: TextStyle(fontSize: 24),
+        ),
+        SizedBox(height: 16),
+        CheckboxListTileExample(headerName: "Test value", subtitleName: "Subtitle test value"),
+      ],
+    ),
+  );
+}
 }
 
 

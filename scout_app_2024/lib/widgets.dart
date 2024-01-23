@@ -184,51 +184,42 @@ class TextState extends State<TextInput> {
   }
 }
 
-<<<<<<< Updated upstream
-class CheckboxInput extends StatefulWidget {
-  const CheckboxInput({
-    Key? key,
-    required this.title,
-    required this.callback,
-    this.initial = false,
-  }) : super(key: key);
 
-  final String title;
-  final BoolCallback callback;
-  final bool initial;
+class CheckboxListTileExample extends StatefulWidget {
+  const CheckboxListTileExample({super.key,
+                                required this.headerName,
+                                required this.subtitleName});
+
+  final String headerName;
+  final String subtitleName;
 
   @override
-  State<CheckboxInput> createState() => CheckboxInputState();
+  State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
 }
 
-class CheckboxInputState extends State<CheckboxInput> {
-  late bool value;
+class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
+  bool checkboxValue1 = true;
 
-  @override
-  void initState() {
-    super.initState();
-    value = widget.initial;
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Checkbox(
-            value: value,
-            onChanged: (newValue) {
-              setState(() {
-                value = newValue!;
-              });
-              widget.callback(value);
-            },
-          ),
-          Text(widget.title),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        CheckboxListTile(
+          value: checkboxValue1,
+          onChanged: (bool? value) {
+            setState(() {
+              checkboxValue1 = value!;
+              print(checkboxValue1);
+              
+            });
+          },
+          title: Text(widget.headerName),
+          subtitle: Text(widget.subtitleName),
+        ),
+        const Divider(height: 0)
+      ],
     );
   }
 }
-=======
->>>>>>> Stashed changes
+

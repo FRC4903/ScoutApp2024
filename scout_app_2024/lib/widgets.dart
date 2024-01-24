@@ -186,12 +186,11 @@ class TextState extends State<TextInput> {
 
 
 class CheckboxListTileExample extends StatefulWidget {
-  const CheckboxListTileExample({super.key,
-                                required this.headerName,
-                                required this.subtitleName});
-
+  const CheckboxListTileExample({super.key, required this.headerName});
+                               
+                    
   final String headerName;
-  final String subtitleName;
+  
 
   @override
   State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
@@ -215,11 +214,15 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
             });
           },
           title: Text(widget.headerName),
-          subtitle: Text(widget.subtitleName),
+          
         ),
         const Divider(height: 0)
       ],
     );
   }
 }
+
+
+
+ 
 

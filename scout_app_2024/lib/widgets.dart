@@ -37,15 +37,15 @@ class IncrementState extends State<Increment> {
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,
-          width: 5.0,
+          width: 2.0,
         ),
       ),
-      width: 200,
+      width: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            padding: const EdgeInsets.all(0),
+            padding: const EdgeInsets.all(10),
             child: Text(
               widget.title,
               style: const TextStyle(
@@ -57,7 +57,7 @@ class IncrementState extends State<Increment> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(0),
+            padding: const EdgeInsets.all(5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -202,49 +202,30 @@ class CheckboxInput extends StatefulWidget {
 
 class CheckboxInputState extends State<CheckboxInput> {
   late bool value;
-=======
-class CheckboxInput extends StatefulWidget {
-  const CheckboxInput({
-    Key? key,
-    required this.title,
-    required this.callback,
-    this.initial = false,
-  }) : super(key: key);
 
-
-class CheckboxListTileExample extends StatefulWidget {
-  const CheckboxListTileExample({super.key, required this.headerName});
-                               
-                    
-  final String headerName;
-  
   @override
-  State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
-}
-
-class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
-  bool checkboxValue1 = true;
-
+  void initState() {
+    super.initState();
+    value = widget.initial;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        CheckboxListTile(
-          value: checkboxValue1,
-          onChanged: (bool? value) {
-            setState(() {
-              checkboxValue1 = value!;
-              print(checkboxValue1);
-              
-            });
-          },
-          title: Text(widget.headerName),
-          
-        ),
-        const Divider(height: 0)
-      ],
+    return Container(
+      child: Row(
+        children: [
+          Checkbox(
+            value: value,
+            onChanged: (newValue) {
+              setState(() {
+                value = newValue!;
+              });
+              widget.callback(value);
+            },
+          ),
+          Text(widget.title),
+        ],
+      ),
     );
   }
 }
-

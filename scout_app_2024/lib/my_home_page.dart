@@ -18,40 +18,41 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
 var inputs = {
     'team': '',
-  };
-    'ScouterName': '',
-    'MatchNumber': '',
+    'ScouterName': 0,
+    'MatchNumber': 0,
     'StartingLocation': '',
-    'Taxi': '',
-    'AutoPickup': '',
-    'AutoScore': '',
-    'GroundPickup': '',
-    'SourcePickup': '',
-    'SpeakerScore': '',
-    'AmpScore': '',
-    'Defends': '',
-    'Defended': '',
-    'ShotsFired': '',
-    'ShotsScored': '',
-    'ChainFit': '',
-    'ScoringAmplifiedSpeaker': '',
-    'ScoringAmplifiedAmp': '',
-    'EndgamePark': '',
-    'OnstageClimb': '',
-    'Harmony': '',
-    'Trap': '',
-    'HumanPlayerSuccess': '',
-    'RP': '',
-    'Won': '',
+    'Taxi': false,
+    'AutoGroundPickup': 0,
+    'AutoSourcePickup': 0,
+    'AutoSpeakerScore': 0,
+    'AutoAmpScore': 0,
+    'Defends': false,
+    'Defended': false,
+    'GroundPickup': false,
+    'SourcePickup': false,
+    'ShotsFired': 0,
+    'ShotsScored': 0,
+    'ChainFit': false,
+    'ScoringAmplifiedSpeaker': 0,
+    'ScoringUnAmpedSpeaker': 0,
+    'ScoringAmp': 0,
+    'EndgamePark': false,
+    'OnstageClimb': false,
+    'Harmony': false,
+    'Trap': false,
+    'HumanPlayerSuccess': 0,
+    'RP': 0,
+    'Won': false,
     'CommentsAuto': '',
     'CommentsTeleop': '',
     'CommentsEndgame': ''
 };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scout App'),
+        title: const Text('Page Slider App'),
       ),
       body: PageView(
         controller: _pageController,
@@ -75,8 +76,8 @@ var inputs = {
             callback:  (value) => setState(() => inputs = value)),
           PostGame(
             inputs: inputs,
-            callback:  (value) => setState(() => inputs = value as Map<String, String>)),
-],
+            callback:  (value) => setState(() => inputs = value as Map<String, String>)), 
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPage,

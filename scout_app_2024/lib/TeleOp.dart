@@ -31,10 +31,10 @@ import 'dart:developer' as developer;
 
 
   Widget build(BuildContext context) {
-    print("Ground Pickup: "+ toString(widget.inputs['GroundPickup']));
-    print("Source Pickup: "+ toString(widget.inputs['SourcePickup']));
-    print("Defense: "+ toString(widget.inputs['Defense']));
-    print("Defended: "+ toString(widget.inputs['Defended']));
+    print(widget.inputs['GroundPickup']);
+    print(widget.inputs['SourcePickup']);
+    print(widget.inputs['Defends']);
+    print(widget.inputs['Defended']);
     print(widget.inputs['SpeakerScore']);
     return SafeArea(
         child: Center(
@@ -76,15 +76,15 @@ import 'dart:developer' as developer;
                 children: [
                   SizedBox(height: 10),
                   Text(
-                    'Defense:',
+                    'Defends:',
                     style: TextStyle(fontSize: 20),
                   ),
                   Transform.scale(
                     scale: 1.5,
                     child: Checkbox(
-                      value: widget.inputs['Defense'],
+                      value: widget.inputs['Defends'],
                       onChanged: (bool? value) {
-                        send('Defense', value ?? false);
+                        send('Defends', value ?? false);
                       },
                     ),
                   ),
@@ -108,13 +108,13 @@ import 'dart:developer' as developer;
               Row(mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                 Text(
-                    'Score in Speaker:  ',
+                    'Score in unamplified Speaker:  ',
                     style: TextStyle(fontSize: 20),
                   ),
               Increment(
-                  title: 'SpeakerScore',
-                  value: widget.inputs['SpeakerScore'],
-                  callback: (value) => send('SpeakerScore',
+                  title: 'ScoringUnAmpedSpeaker',
+                  value: widget.inputs['ScoringUnAmpedSpeaker'],
+                  callback: (value) => send('ScoringUnAmpedSpeaker',
                       value)), //increment widget (add, subtract, and show value), setstate sets the variable to the output from the widget
             ]),
               ],

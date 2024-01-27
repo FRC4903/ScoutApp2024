@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 import 'widgets.dart';
-
 
 class Endgame extends StatelessWidget {
   const Endgame({super.key, required this.inputs, required this.callback});

@@ -14,7 +14,6 @@ class PostGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     QRCodeGenerator qrCodeGenerator = QRCodeGenerator(inputs);
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,3 +38,4 @@ class PostGame extends StatelessWidget {
     );
   }
 }
+

@@ -12,6 +12,7 @@ import 'widgets.dart';
       _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
     }
     
+    
     class _MyStatefulWidgetState extends State<MyStatefulWidget> {
        @override
   Widget build(BuildContext context) {
@@ -53,8 +54,7 @@ import 'widgets.dart';
       ),
     ])));
     }
-
-  void send(String tag, value) {
+   void send(String tag, value) {
     setState(() => widget.inputs[tag] = value);
     widget.callback(widget.inputs);
   }

@@ -46,7 +46,6 @@ var inputs = {
     'CommentsTeleop': '',
     'CommentsEndgame': ''
 };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

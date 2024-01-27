@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+
 import 'package:qr_flutter/qr_flutter.dart';
 import "qr_code.dart";
+import 'widgets.dart';
+
 typedef StringCallback = void Function(String value);
 
 class PostGame extends StatelessWidget {
@@ -46,17 +48,6 @@ class PostGame extends StatelessWidget {
   }
 }
 
-// class CheckboxListTileExample extends StatefulWidget {
-//   const CheckboxListTileExample({Key? key});
-
-//   @override
-//   State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
-// }
-
-// class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
-//   bool checkboxValue1 = true;
-//   bool checkboxValue2 = true;
-//   bool checkboxValue3 = true;
 
 //   @override
 //   Widget build(BuildContext context) {

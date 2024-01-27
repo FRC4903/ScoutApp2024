@@ -37,15 +37,15 @@ class IncrementState extends State<Increment> {
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,
-          width: 2.0,
+          width: 5.0,
         ),
       ),
-      width: 250,
+      width: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(0),
             child: Text(
               widget.title,
               style: const TextStyle(
@@ -57,7 +57,7 @@ class IncrementState extends State<Increment> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -184,7 +184,25 @@ class TextState extends State<TextInput> {
   }
 }
 
+class CheckboxInput extends StatefulWidget {
+  const CheckboxInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
 
+  final String title;
+  final BoolCallback callback;
+  final bool initial;
+
+  @override
+  State<CheckboxInput> createState() => CheckboxInputState();
+}
+
+class CheckboxInputState extends State<CheckboxInput> {
+  late bool value;
+=======
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
     Key? key,
@@ -200,7 +218,6 @@ class CheckboxListTileExample extends StatefulWidget {
                     
   final String headerName;
   
-
   @override
   State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
 }
@@ -230,3 +247,4 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
     );
   }
 }
+

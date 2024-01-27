@@ -18,6 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
 var inputs = {
     'team': '',
+  };
     'ScouterName': '',
     'MatchNumber': '',
     'StartingLocation': '',
@@ -50,7 +51,7 @@ var inputs = {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Page Slider App'),
+        title: const Text('Scout App'),
       ),
       body: PageView(
         controller: _pageController,
@@ -66,7 +67,7 @@ var inputs = {
           Auto(
             inputs: inputs,
             callback: (value) => setState(() => inputs = value)),
-          MyStatefulWidget(
+          TeloOp(
             inputs: inputs,
             callback:  (value) => setState(() => inputs = value)),
           Endgame(
@@ -74,8 +75,8 @@ var inputs = {
             callback:  (value) => setState(() => inputs = value)),
           PostGame(
             inputs: inputs,
-            callback:  (value) => setState(() => inputs = value as Map<String, String>)), 
-        ],
+            callback:  (value) => setState(() => inputs = value as Map<String, String>)),
+],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPage,

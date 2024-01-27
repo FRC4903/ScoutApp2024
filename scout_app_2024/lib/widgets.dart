@@ -184,7 +184,6 @@ class TextState extends State<TextInput> {
   }
 }
 
-
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
     Key? key,
@@ -193,40 +192,40 @@ class CheckboxInput extends StatefulWidget {
     this.initial = false,
   }) : super(key: key);
 
-
-class CheckboxListTileExample extends StatefulWidget {
-  const CheckboxListTileExample({super.key, required this.headerName});
-                               
-                    
-  final String headerName;
-  
+  final String title;
+  final BoolCallback callback;
+  final bool initial;
 
   @override
-  State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
+  State<CheckboxInput> createState() => CheckboxInputState();
 }
 
-class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
-  bool checkboxValue1 = true;
+class CheckboxInputState extends State<CheckboxInput> {
+  late bool value;
 
+  @override
+  void initState() {
+    super.initState();
+    value = widget.initial;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        CheckboxListTile(
-          value: checkboxValue1,
-          onChanged: (bool? value) {
-            setState(() {
-              checkboxValue1 = value!;
-              print(checkboxValue1);
-              
-            });
-          },
-          title: Text(widget.headerName),
-          
-        ),
-        const Divider(height: 0)
-      ],
+    return Container(
+      child: Row(
+        children: [
+          Checkbox(
+            value: value,
+            onChanged: (newValue) {
+              setState(() {
+                value = newValue!;
+              });
+              widget.callback(value);
+            },
+          ),
+          Text(widget.title),
+        ],
+      ),
     );
   }
 }

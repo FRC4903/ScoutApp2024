@@ -7,41 +7,10 @@ class QRCodeGenerator {
   QRCodeGenerator(this.inputs);
 
   String generateQRCode() {
-    return _buildQRData();
-  }
+    // Concatenate the values without any separators
+    String formattedData = inputs.values.map((value) => '$value').join(',');
 
-  String _buildQRData() {
-    return '''
-      Team: ${inputs['team']}
-      TeamNumber: ${inputs['TeamNumber']}
-      ScouterName: ${inputs['ScouterName']}
-      MatchNumber: ${inputs['MatchNumber']}
-      StartingLocation: ${inputs['StartingLocation']}
-      Taxi: ${inputs['Taxi']}
-      AutoPickup: ${inputs['AutoPickup']}
-      AutoScore: ${inputs['AutoScore']}
-      GroundPickup: ${inputs['GroundPickup']}
-      SourcePickup: ${inputs['SourcePickup']}
-      SpeakerScore: ${inputs['SpeakerScore']}
-      AmpScore: ${inputs['AmpScore']}
-      Defends: ${inputs['Defends']}
-      Defended: ${inputs['Defended']}
-      ShotsFired: ${inputs['ShotsFired']}
-      ShotsScored: ${inputs['ShotsScored']}
-      ChainFit: ${inputs['ChainFit']}
-      ScoringAmplifiedSpeaker: ${inputs['ScoringAmplifiedSpeaker']}
-      ScoringAmplifiedAmp: ${inputs['ScoringAmplifiedAmp']}
-      EndgamePark: ${inputs['EndgamePark']}
-      OnstageClimb: ${inputs['OnstageClimb']}
-      Harmony: ${inputs['Harmony']}
-      Trap: ${inputs['Trap']}
-      HumanPlayerSuccess: ${inputs['HumanPlayerSuccess']}
-      RP: ${inputs['RP']}
-      Won: ${inputs['Won']}
-      CommentsAuto: ${inputs['CommentsAuto']}
-      CommentsTeleop: ${inputs['CommentsTeleop']}
-      CommentsEndgame: ${inputs['CommentsEndgame']}
-    ''';
+    return formattedData;
   }
 }
 

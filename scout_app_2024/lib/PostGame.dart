@@ -10,6 +10,7 @@ class PostGame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +41,9 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
+      
       children: <Widget>[
         CheckboxListTile(
           value: checkboxValue1,

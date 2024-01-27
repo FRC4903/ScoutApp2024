@@ -184,7 +184,6 @@ class TextState extends State<TextInput> {
   }
 }
 
-<<<<<<< Updated upstream
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
     Key? key,
@@ -230,5 +229,3 @@ class CheckboxInputState extends State<CheckboxInput> {
     );
   }
 }
-=======
->>>>>>> Stashed changes

@@ -16,9 +16,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  var inputs = {
+var inputs = {
     'team': '',
   };
+    'ScouterName': '',
+    'MatchNumber': '',
+    'StartingLocation': '',
+    'Taxi': '',
+    'AutoPickup': '',
+    'AutoScore': '',
+    'GroundPickup': '',
+    'SourcePickup': '',
+    'SpeakerScore': '',
+    'AmpScore': '',
+    'Defends': '',
+    'Defended': '',
+    'ShotsFired': '',
+    'ShotsScored': '',
+    'ChainFit': '',
+    'ScoringAmplifiedSpeaker': '',
+    'ScoringAmplifiedAmp': '',
+    'EndgamePark': '',
+    'OnstageClimb': '',
+    'Harmony': '',
+    'Trap': '',
+    'HumanPlayerSuccess': '',
+    'RP': '',
+    'Won': '',
+    'CommentsAuto': '',
+    'CommentsTeleop': '',
+    'CommentsEndgame': ''
+};
   @override
   Widget build(BuildContext context) {
     return Scaffold(

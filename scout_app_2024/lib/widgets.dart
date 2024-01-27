@@ -184,7 +184,6 @@ class TextState extends State<TextInput> {
   }
 }
 
-<<<<<<< Updated upstream
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
     Key? key,
@@ -203,7 +202,22 @@ class CheckboxInput extends StatefulWidget {
 
 class CheckboxInputState extends State<CheckboxInput> {
   late bool value;
+=======
+class CheckboxInput extends StatefulWidget {
+  const CheckboxInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
 
+
+class CheckboxListTileExample extends StatefulWidget {
+  const CheckboxListTileExample({super.key, required this.headerName});
+                               
+                    
+  final String headerName;
+  
   @override
   State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
 }
@@ -233,5 +247,4 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
     );
   }
 }
-=======
->>>>>>> Stashed changes
+

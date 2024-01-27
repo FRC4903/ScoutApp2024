@@ -14,6 +14,7 @@ import 'dart:developer' as developer;
       _TeloOpState createState() => _TeloOpState();
     }
     
+    
     class _TeloOpState extends State<TeloOp> {
        @override
        bool groundPickup=false;
@@ -158,8 +159,7 @@ import 'dart:developer' as developer;
       // ),
     ));
     }
-
-  void send(String tag, value) {
+   void send(String tag, value) {
     setState(() => widget.inputs[tag] = value);
     widget.callback(widget.inputs);
   }

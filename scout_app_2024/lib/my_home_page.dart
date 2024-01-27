@@ -18,13 +18,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
   var inputs = {
     'team': '',
-    'match': '',
-    'scouter': '',
-    'GroundPickup': false,
-    'SourcePickup': false,
-    'Defense': false,
-    'Defended': false,
-    'SpeakerScore': 0,
   };
   @override
   Widget build(BuildContext context) {

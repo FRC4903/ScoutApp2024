@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets.dart';
 
 typedef StringCallback = void Function(String value);
 
@@ -20,7 +21,6 @@ class PostGame extends StatelessWidget {
             style: TextStyle(fontSize: 24),
           ),
           SizedBox(height: 16),
-          CheckboxListTileExample(),
         ],
       ),
     );
@@ -41,9 +41,7 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Column(
-      
       children: <Widget>[
         CheckboxListTile(
           value: checkboxValue1,

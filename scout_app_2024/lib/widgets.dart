@@ -184,6 +184,7 @@ class TextState extends State<TextInput> {
   }
 }
 
+<<<<<<< Updated upstream
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
     Key? key,
@@ -204,29 +205,33 @@ class CheckboxInputState extends State<CheckboxInput> {
   late bool value;
 
   @override
-  void initState() {
-    super.initState();
-    value = widget.initial;
-  }
+  State<CheckboxListTileExample> createState() => _CheckboxListTileExampleState();
+}
+
+class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
+  bool checkboxValue1 = true;
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Checkbox(
-            value: value,
-            onChanged: (newValue) {
-              setState(() {
-                value = newValue!;
-              });
-              widget.callback(value);
-            },
-          ),
-          Text(widget.title),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        CheckboxListTile(
+          value: checkboxValue1,
+          onChanged: (bool? value) {
+            setState(() {
+              checkboxValue1 = value!;
+              print(checkboxValue1);
+              
+            });
+          },
+          title: Text(widget.headerName),
+          
+        ),
+        const Divider(height: 0)
+      ],
     );
   }
 }
-
+=======
+>>>>>>> Stashed changes

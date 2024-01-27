@@ -185,6 +185,15 @@ class TextState extends State<TextInput> {
 }
 
 
+class CheckboxInput extends StatefulWidget {
+  const CheckboxInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
+
+
 class CheckboxListTileExample extends StatefulWidget {
   const CheckboxListTileExample({super.key, required this.headerName});
                                
@@ -221,8 +230,3 @@ class _CheckboxListTileExampleState extends State<CheckboxListTileExample> {
     );
   }
 }
-
-
-
- 
-

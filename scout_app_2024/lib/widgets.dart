@@ -32,60 +32,55 @@ class IncrementState extends State<Increment> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 250,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(144, 255, 255, 255),
+        color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,
           width: 2.0,
         ),
       ),
-      width: 250,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              widget.title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
+          SizedBox(height: 10),
+          Text(
+            widget.title,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: decrement,
+                icon: Icon(
+                  Icons.remove_circle_outline,
+                  size: 40,
+                ),
               ),
-            ),
+              Text(
+                '$value',
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: increment,
+                icon: Icon(
+                  Icons.add_circle_outline,
+                  size: 40,
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: decrement,
-                  icon: const Icon(
-                    Icons.remove_circle_outline,
-                    size: 40,
-                  ),
-                ),
-                Text(
-                  '$value',
-                  style: const TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    decoration: TextDecoration.none,
-                  ),
-                ),
-                IconButton(
-                  onPressed: increment,
-                  icon: const Icon(
-                    Icons.add_circle_outline,
-                    size: 40,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          SizedBox(height: 10),
         ],
       ),
     );
@@ -151,27 +146,21 @@ class TextState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: [
-          Container(
-            width: 500,
-            height: 100,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(144, 255, 255, 255),
-              borderRadius: BorderRadius.circular(9.0),
-            ),
-            child: TextField(
-              focusNode: focus,
-              controller: textController,
-              style: const TextStyle(height: 5),
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: widget.title,
-                hintText: 'Enter comments here...',
-              ),
-            ),
-          ),
-        ],
+      width: 500,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade300,
+        borderRadius: BorderRadius.circular(9.0),
+      ),
+      child: TextField(
+        focusNode: focus,
+        controller: textController,
+        style: TextStyle(fontSize: 20),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: widget.title,
+          hintText: 'Enter comments here...',
+        ),
       ),
     );
   }
@@ -211,21 +200,22 @@ class CheckboxInputState extends State<CheckboxInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Checkbox(
-            value: value,
-            onChanged: (newValue) {
-              setState(() {
-                value = newValue!;
-              });
-              widget.callback(value);
-            },
-          ),
-          Text(widget.title),
-        ],
-      ),
+    return Row(
+      children: [
+        Checkbox(
+          value: value,
+          onChanged: (newValue) {
+            setState(() {
+              value = newValue!;
+            });
+            widget.callback(value);
+          },
+        ),
+        Text(
+          widget.title,
+          style: TextStyle(fontSize: 20),
+        ),
+      ],
     );
   }
 }

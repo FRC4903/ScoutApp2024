@@ -18,8 +18,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
 var inputs = {
     'team': '',
-    'ScouterName': 0,
-    'MatchNumber': 0,
+    'ScouterName': "",
+    'MatchNumber': "",
     'StartingLocation': '',
     'Taxi': false,
     'AutoGroundPickup': 0,

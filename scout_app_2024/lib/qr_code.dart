@@ -40,13 +40,7 @@ class QRCodeWidget extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Perform any action when the button is pressed
-              },
-              child: Text('Submit'),
-            ),
-          ],
+                    ],
         ),
       ),
     );

@@ -4,6 +4,233 @@ typedef IntCallback = void Function(int value);
 typedef StringCallback = void Function(String value);
 typedef BoolCallback = void Function(bool value);
 
+class OutlinedCheckbox extends StatefulWidget {
+  const OutlinedCheckbox({
+    Key? key,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
+
+  final BoolCallback callback;
+  final bool initial;
+
+  @override
+  State<OutlinedCheckbox> createState() => OutlinedCheckboxState();
+}
+
+class OutlinedCheckboxState extends State<OutlinedCheckbox> {
+  late bool value;
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.initial;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          value = !value;
+        });
+        widget.callback(value);
+      },
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.red,
+            width: 2.0,
+          ),
+          borderRadius: BorderRadius.circular(9.0),
+          color: value ? Colors.orange : Colors.transparent,
+        ),
+        child: Center(
+          child: Icon(
+            Icons.check,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomDropdown extends StatefulWidget {
+  const CustomDropdown({
+    Key? key,
+    required this.options,
+    required this.callback,
+    required this.initialValue,
+    required this.label
+  }) : super(key: key);
+
+  final List<String> options;
+  final StringCallback callback;
+  final String initialValue;
+  final String label; // Add a label to describe the purpose of the dropdown
+
+  @override
+  State<CustomDropdown> createState() => CustomDropdownState();
+}
+
+class CustomDropdownState extends State<CustomDropdown> {
+  late String selectedOption;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedOption = widget.initialValue;
+  }
+
+ @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            showDropdown(context);
+          },
+          child: Container(
+            width: 150,
+            height: 50,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(9.0),
+              color: Colors.transparent,
+            ),
+            child: Center(
+              child: Text(
+                selectedOption.isEmpty ? widget.label : selectedOption,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+void showDropdown(BuildContext context) {
+  final RenderBox renderBox = context.findRenderObject() as RenderBox;
+  final position = renderBox.localToGlobal(Offset.zero);
+
+  // Filter out empty values
+  final List<String> nonEmptyOptions = widget.options.where((option) => option.isNotEmpty).toList();
+
+  final List<PopupMenuItem<String>> menuItems = nonEmptyOptions.map<PopupMenuItem<String>>((String option) {
+    return PopupMenuItem<String>(
+      value: option,
+      child: Text(option),
+    );
+  }).toList();
+
+  showMenu(
+    context: context,
+    position: RelativeRect.fromLTRB(position.dx, position.dy + 50, position.dx + 150, position.dy + 200),
+    items: <PopupMenuEntry<String>>[ // Explicitly specify the type here
+      PopupMenuItem<String>(
+        value: 'custom_dropdown_scroll_view',
+        child: Container(
+          height: 150, // Set the maximum height of the menu
+          child: SingleChildScrollView(
+            child: Column(
+              children: menuItems,
+            ),
+          ),
+        ),
+      ),
+    ],
+  ).then((value) {
+    if (value != null && value != 'custom_dropdown_header') {
+      setState(() {
+        selectedOption = value;
+      });
+      widget.callback(value);
+    }
+  });
+}
+
+
+
+}
+
+class TextInput extends StatefulWidget {
+  const TextInput({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = '',
+  }) : super(key: key);
+
+  final String title;
+  final StringCallback callback;
+  final String initial;
+
+  @override
+  State<TextInput> createState() => TextInputState();
+}
+
+class TextInputState extends State<TextInput> {
+  late TextEditingController textController;
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController(text: widget.initial);
+  }
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500,
+      height: 123,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade300,
+        borderRadius: BorderRadius.circular(9.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.title,
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: textController,
+              style: TextStyle(fontSize: 20),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter ${widget.title.toLowerCase()} here...',
+              ),
+              onChanged: (value) {
+                widget.callback(value);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class Increment extends StatefulWidget {
   const Increment({
     Key? key,
@@ -103,21 +330,7 @@ class IncrementState extends State<Increment> {
   }
 }
 
-class TextInput extends StatefulWidget {
-  const TextInput({
-    Key? key,
-    required this.title,
-    required this.callback,
-    this.initial = '',
-  }) : super(key: key);
 
-  final String title;
-  final StringCallback callback;
-  final String initial;
-
-  @override
-  State<TextInput> createState() => TextState();
-}
 
 class TextState extends State<TextInput> {
   String value = '';
@@ -219,3 +432,4 @@ class CheckboxInputState extends State<CheckboxInput> {
     );
   }
 }
+

@@ -18,21 +18,16 @@ class PostGame extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'PostGame',
-            style: TextStyle(fontSize: 24),
-          ),
-          SizedBox(height: 16),
-          // CheckboxListTileExample(),
-          SizedBox(height: 16),
+          
+          SizedBox(height: 24),
           Container(
             child: QrImageView(
               data: qrCodeGenerator.generateQRCode(),
               version: QrVersions.auto,
-              size: 200,
+              size: 300,
             ),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 24),
         ],
       ),
     );

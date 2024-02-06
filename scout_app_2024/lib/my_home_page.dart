@@ -45,7 +45,11 @@ var inputs = {
     'Won': false,
     'CommentsAuto': '',
     'CommentsTeleop': '',
-    'CommentsEndgame': ''
+    'CommentsEndgame': '',
+    'Parked': false,
+    'OnStageClimb': false,
+    'NoteInTrap': 0,
+    'HumanAttempts': 0
 };
 
   @override

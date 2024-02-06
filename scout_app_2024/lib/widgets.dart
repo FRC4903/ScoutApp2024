@@ -47,12 +47,12 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
           borderRadius: BorderRadius.circular(9.0),
           color: value ? Colors.orange : Colors.transparent,
         ),
-        child: Center(
-          child: Icon(
-            Icons.check,
-            color: Colors.white,
-          ),
-        ),
+        // child: Center(
+        //   child: Icon(
+        //     Icons.check,
+        //     color: Colors.white,
+        //   ),
+        // ),
       ),
     );
   }

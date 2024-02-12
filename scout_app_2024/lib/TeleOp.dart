@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'widgets.dart';
 
 class TeloOp extends StatefulWidget {
-  const TeloOp({Key? key, required this.inputs, required this.callback});
+  const TeloOp({Key? key, required this.inputs, required this.callback}) : super(key: key);
 
   final inputs;
   final callback;
@@ -12,6 +12,7 @@ class TeloOp extends StatefulWidget {
 }
 
 class _TeloOpState extends State<TeloOp> {
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
@@ -28,7 +29,7 @@ class _TeloOpState extends State<TeloOp> {
                     initial: widget.inputs['GroundPickup'],
                     callback: (value) => send('GroundPickup', value),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CheckboxInput(
                     title: 'Source Pickup',
                     initial: widget.inputs['SourcePickup'],
@@ -36,7 +37,7 @@ class _TeloOpState extends State<TeloOp> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   CheckboxInput(
@@ -44,7 +45,7 @@ class _TeloOpState extends State<TeloOp> {
                     initial: widget.inputs['Defends'],
                     callback: (value) => send('Defends', value),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CheckboxInput(
                     title: 'Defended',
                     initial: widget.inputs['Defended'],
@@ -52,7 +53,7 @@ class _TeloOpState extends State<TeloOp> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Increment(

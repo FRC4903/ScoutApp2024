@@ -276,7 +276,7 @@ class TextInputState extends State<TextInput> {
       width: 500,
       height: 123,
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(9.0),
       ),
       child: Column(
@@ -287,7 +287,7 @@ class TextInputState extends State<TextInput> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.title,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
               textAlign: TextAlign.center,
             ),
           ),
@@ -298,6 +298,7 @@ class TextInputState extends State<TextInput> {
               style: const TextStyle(fontSize: 20),
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
+                hintStyle: const TextStyle(color: Colors.black),
                 hintText: 'Enter ${widget.title.toLowerCase()} here...',
               ),
               onChanged: (value) {
@@ -344,7 +345,7 @@ class IncrementState extends State<Increment> {
     return Container(
       width: 250 * widthRatio,
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,

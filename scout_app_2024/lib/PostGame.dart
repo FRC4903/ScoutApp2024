@@ -19,7 +19,13 @@ class PostGame extends StatelessWidget {
         children: [
           
           const SizedBox(height: 24),
+
+
+
           Container(
+            decoration: BoxDecoration(
+              color: Colors.white
+            ),
             child: QrImageView(
               data: qrCodeGenerator.generateQRCode(),
               version: QrVersions.auto,

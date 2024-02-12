@@ -13,7 +13,10 @@ class _Endgame extends State<Endgame>
 {
   @override
   Widget build(BuildContext context) {
+    
+
     return SafeArea(
+      
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

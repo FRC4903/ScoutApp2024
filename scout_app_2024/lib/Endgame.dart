@@ -11,6 +11,7 @@ class Endgame extends StatefulWidget {
 
 class _Endgame extends State<Endgame>
 {
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
@@ -27,7 +28,7 @@ class _Endgame extends State<Endgame>
                     initial: widget.inputs['Parked'],
                     callback: (value) => send('Parked', value),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CheckboxInput(
                     title: 'Onstage Climb',
                     initial: widget.inputs['OnStageClimb'],
@@ -38,7 +39,7 @@ class _Endgame extends State<Endgame>
   
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   CheckboxInput(
@@ -46,7 +47,7 @@ class _Endgame extends State<Endgame>
                     initial: widget.inputs['Won'],
                     callback: (value) => send('Won', value),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   CheckboxInput(
                     title: 'Harmony',
                     initial: widget.inputs['Harmony'],
@@ -54,7 +55,7 @@ class _Endgame extends State<Endgame>
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Increment(

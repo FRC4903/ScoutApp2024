@@ -4,6 +4,61 @@ typedef IntCallback = void Function(int value);
 typedef StringCallback = void Function(String value);
 typedef BoolCallback = void Function(bool value);
 
+
+const double initialScreenWidth = 1265;
+const double initialScreenHeight = 682;
+
+
+class NumberSquare extends StatefulWidget {
+  const NumberSquare({
+    Key? key,
+    required this.callback,
+    required this.number,
+    required this.active, // Add a parameter to indicate whether this square is active
+    this.value = 0,
+  }) : super(key: key);
+
+  final IntCallback callback;
+  final int number;
+  final bool active; // Add this line to indicate whether this square is active
+  final int value;
+
+  @override
+  State<NumberSquare> createState() => _NumberSquareState();
+}
+
+class _NumberSquareState extends State<NumberSquare> {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: _toggleSelection,
+      child: Container(
+        width: 150,
+        height: 150,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 2.0,
+          ),
+          color: widget.active ? Colors.orange : Colors.transparent, // Use widget.active
+        ),
+        child: Center(
+          child: Text(
+            '${widget.number}',
+            style: TextStyle(
+              fontSize: 70,
+              color: widget.active ? Colors.white : Colors.black, // Use widget.active
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _toggleSelection() {
+    widget.callback(widget.number); // Pass the number to the callback
+  }
+}
 class OutlinedCheckbox extends StatefulWidget {
   const OutlinedCheckbox({
     Key? key,
@@ -29,6 +84,8 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
 
   @override
   Widget build(BuildContext context) {
+    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
     return InkWell(
       onTap: () {
         setState(() {
@@ -37,14 +94,14 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
         widget.callback(value);
       },
       child: Container(
-        width: 50,
-        height: 50,
+        width: 50 * widthRatio,
+        height: 50 * heightRatio,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.red,
             width: 2.0,
           ),
-          borderRadius: BorderRadius.circular(9.0),
+          borderRadius: BorderRadius.circular(9.0 ),
           color: value ? Colors.orange : Colors.transparent,
         ),
         // child: Center(
@@ -87,6 +144,8 @@ class CustomDropdownState extends State<CustomDropdown> {
 
  @override
   Widget build(BuildContext context) {
+    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
     return Column(
       children: [
         InkWell(
@@ -94,8 +153,8 @@ class CustomDropdownState extends State<CustomDropdown> {
             showDropdown(context);
           },
           child: Container(
-            width: 150,
-            height: 50,
+            width: 150 * widthRatio,
+            height: 50 * heightRatio,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.black,
@@ -107,7 +166,7 @@ class CustomDropdownState extends State<CustomDropdown> {
             child: Center(
               child: Text(
                 selectedOption.isEmpty ? widget.label : selectedOption,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           ),
@@ -135,7 +194,7 @@ void showDropdown(BuildContext context) {
     items: <PopupMenuEntry<String>>[ // Explicitly specify the type here
       PopupMenuItem<String>(
         value: 'custom_dropdown_scroll_view',
-        child: Container(
+        child: SizedBox(
           height: 150, // Set the maximum height of the menu
           child: SingleChildScrollView(
             child: Column(
@@ -192,9 +251,12 @@ class TextInputState extends State<TextInput> {
 
   @override
   Widget build(BuildContext context) {
+        double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+
     return Container(
-      width: 500,
-      height: 123,
+      width: 500 * widthRatio,
+      height: 123 * heightRatio,
       decoration: BoxDecoration(
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(9.0),
@@ -207,7 +269,7 @@ class TextInputState extends State<TextInput> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.title,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ),
@@ -215,9 +277,9 @@ class TextInputState extends State<TextInput> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: textController,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: 'Enter ${widget.title.toLowerCase()} here...',
               ),
               onChanged: (value) {
@@ -258,8 +320,11 @@ class IncrementState extends State<Increment> {
 
   @override
   Widget build(BuildContext context) {
+        double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+
     return Container(
-      width: 250,
+      width: 250 * widthRatio,
       decoration: BoxDecoration(
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(9.0),
@@ -271,43 +336,43 @@ class IncrementState extends State<Increment> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             widget.title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
                 onPressed: decrement,
-                icon: Icon(
+                icon: const Icon(
                   Icons.remove_circle_outline,
                   size: 40,
                 ),
               ),
               Text(
                 '$value',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 40,
                   color: Colors.black,
                 ),
               ),
               IconButton(
                 onPressed: increment,
-                icon: Icon(
+                icon: const Icon(
                   Icons.add_circle_outline,
                   size: 40,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ],
       ),
     );
@@ -368,9 +433,9 @@ class TextState extends State<TextInput> {
       child: TextField(
         focusNode: focus,
         controller: textController,
-        style: TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 20),
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           labelText: widget.title,
           hintText: 'Enter comments here...',
         ),
@@ -426,7 +491,7 @@ class CheckboxInputState extends State<CheckboxInput> {
         ),
         Text(
           widget.title,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
       ],
     );

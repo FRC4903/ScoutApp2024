@@ -17,7 +17,7 @@ class QRCodeGenerator {
 class QRCodeWidget extends StatelessWidget {
   final Map<String, dynamic> inputs;
 
-  QRCodeWidget({required this.inputs});
+  const QRCodeWidget({super.key, required this.inputs});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class QRCodeWidget extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('QR Code Generator'),
+        title: const Text('QR Code Generator'),
       ),
       body: Center(
         child: Column(

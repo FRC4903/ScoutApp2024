@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import "qr_code.dart";
-import 'widgets.dart';
 
 typedef StringCallback = void Function(String value);
 
@@ -19,7 +18,7 @@ class PostGame extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Container(
             child: QrImageView(
               data: qrCodeGenerator.generateQRCode(),
@@ -27,7 +26,7 @@ class PostGame extends StatelessWidget {
               size: 300,
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
         ],
       ),
     );

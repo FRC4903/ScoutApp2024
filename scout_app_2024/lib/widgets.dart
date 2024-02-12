@@ -14,13 +14,13 @@ class NumberSquare extends StatefulWidget {
     Key? key,
     required this.callback,
     required this.number,
-    required this.active, // Add a parameter to indicate whether this square is active
+    required this.startPos,
     this.value = 0,
   }) : super(key: key);
 
   final IntCallback callback;
   final int number;
-  final bool active; // Add this line to indicate whether this square is active
+  final int startPos; // Add startPos parameter
   final int value;
 
   @override
@@ -28,6 +28,8 @@ class NumberSquare extends StatefulWidget {
 }
 
 class _NumberSquareState extends State<NumberSquare> {
+  bool _isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -40,14 +42,14 @@ class _NumberSquareState extends State<NumberSquare> {
             color: Colors.black,
             width: 2.0,
           ),
-          color: widget.active ? Colors.orange : Colors.transparent, // Use widget.active
+          color: _isSelected ? Colors.orange : Colors.transparent,
         ),
         child: Center(
           child: Text(
             '${widget.number}',
             style: TextStyle(
               fontSize: 70,
-              color: widget.active ? Colors.white : Colors.black, // Use widget.active
+              color: _isSelected ? Colors.white : Colors.black,
             ),
           ),
         ),
@@ -56,9 +58,25 @@ class _NumberSquareState extends State<NumberSquare> {
   }
 
   void _toggleSelection() {
-    widget.callback(widget.number); // Pass the number to the callback
+    setState(() {
+      _isSelected = !_isSelected;
+    });
+    widget.callback(widget.number); // Notify parent about the selected number
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isSelected = widget.number == widget.startPos; // Check if the number matches the startPos
+  }
+
+  @override
+  void didUpdateWidget(covariant NumberSquare oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _isSelected = widget.number == widget.startPos; // Update isSelected when widget is updated
   }
 }
+
 class OutlinedCheckbox extends StatefulWidget {
   const OutlinedCheckbox({
     Key? key,
@@ -101,7 +119,7 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
             color: Colors.red,
             width: 2.0,
           ),
-          borderRadius: BorderRadius.circular(9.0 ),
+          borderRadius: BorderRadius.circular(9.0),
           color: value ? Colors.orange : Colors.transparent,
         ),
         // child: Center(

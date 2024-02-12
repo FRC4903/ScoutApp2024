@@ -20,7 +20,7 @@ var inputs = {
   'team': '',
   'ScouterName': "",
   'MatchNumber': "",
-  'StartPos': "",
+  'StartPos': -1,
   'Taxi': false,
   'AutoGroundPickup': 0,
   'AutoSourcePickup': 0,

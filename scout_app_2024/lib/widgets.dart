@@ -255,8 +255,8 @@ class TextInputState extends State<TextInput> {
     double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
 
     return Container(
-      width: 500 * widthRatio,
-      height: 123 * heightRatio,
+      width: 500,
+      height: 123,
       decoration: BoxDecoration(
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(9.0),

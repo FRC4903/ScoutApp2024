@@ -106,60 +106,78 @@ class _AutoState extends State<Auto> {
             ),
           ],
             ),
-            Stack(
-              alignment: Alignment.centerRight,
-              children: [
-                Positioned(
-                  top: 65 * heightRatio,
-                  left: 210 * widthRatio,
-                  child: Column(
-                    children: List.generate(
-                      3,
-                      (index) => Column(
-                        children: [
-                          OutlinedCheckbox(
-                            callback: (value) {
-                              setState(() {
-                                closeNoteStates[index] = value;
-                              });
-                            },
-                            initial: closeNoteStates[index],
-                          ),
-                          SizedBox(
-                            height: 47 * heightRatio,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 35 * heightRatio,
-                  left: 570 * widthRatio,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: List.generate(
-                      5,
-                      (index) => Column(
-                        children: [
-                          OutlinedCheckbox(
-                            callback: (value) {
-                              setState(() {
-                                centerNoteStates[index] = value;
-                              });
-                            },
-                            initial: centerNoteStates[index],
-                          ),
-                          SizedBox(
-                            height: 62 * heightRatio,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+Stack(
+  alignment: Alignment.centerRight,
+  children: [
+    Positioned(
+      top: 65 * heightRatio,
+      left: 210 * widthRatio,
+      child: Column(
+        children: [
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote0', value),
+            initial: widget.inputs['closeNote0'],
+          ),
+          SizedBox(
+            height: 47 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote1', value),
+            initial: widget.inputs['closeNote1'],
+          ),
+          SizedBox(
+            height: 47 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote2', value),
+            initial: widget.inputs['closeNote2'],
+          ),
+        ],
+      ),
+    ),
+    Positioned(
+      top: 35 * heightRatio,
+      left: 570 * widthRatio,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote0', value),
+            initial: widget.inputs['centerNote0'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote1', value),
+            initial: widget.inputs['centerNote1'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote2', value),
+            initial: widget.inputs['centerNote2'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote3', value),
+            initial: widget.inputs['centerNote3'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote4', value),
+            initial: widget.inputs['centerNote4'],
+          ),
+        ],
+      ),
+    ),
+  ],
+),
           ],
         );
       },

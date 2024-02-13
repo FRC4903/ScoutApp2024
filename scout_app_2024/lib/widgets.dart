@@ -42,7 +42,7 @@ class _NumberSquareState extends State<NumberSquare> {
             color: Colors.black,
             width: 2.0,
           ),
-          color: _isSelected ? Colors.orange : Colors.transparent,
+          color: _isSelected ? Colors.orange : Color.fromARGB(112, 84, 215, 224),
         ),
         child: Center(
           child: Text(
@@ -102,15 +102,11 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth;
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight;
+
     return InkWell(
-      onTap: () {
-        setState(() {
-          value = !value;
-        });
-        widget.callback(value);
-      },
+      onTap: _toggleValue, // Changed to _toggleValue
       child: Container(
         width: 50 * widthRatio,
         height: 50 * heightRatio,
@@ -130,6 +126,13 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
         // ),
       ),
     );
+  }
+
+  void _toggleValue() {
+    setState(() {
+      value = !value;
+    });
+    widget.callback(value); // Notify parent about the updated value
   }
 }
 

@@ -23,6 +23,7 @@ class _TeloOpState extends State<TeloOp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Ground Pickup',
@@ -39,6 +40,7 @@ class _TeloOpState extends State<TeloOp> {
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Defends',
@@ -55,7 +57,9 @@ class _TeloOpState extends State<TeloOp> {
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  
                   Increment(
                     title: 'ScoringAmplifiedSpeaker',
                     value: widget.inputs['ScoringAmplifiedSpeaker'],

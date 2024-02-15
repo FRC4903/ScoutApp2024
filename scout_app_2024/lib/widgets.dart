@@ -14,13 +14,13 @@ class NumberSquare extends StatefulWidget {
     Key? key,
     required this.callback,
     required this.number,
-    required this.active, // Add a parameter to indicate whether this square is active
+    required this.startPos,
     this.value = 0,
   }) : super(key: key);
 
   final IntCallback callback;
   final int number;
-  final bool active; // Add this line to indicate whether this square is active
+  final int startPos; // Add startPos parameter
   final int value;
 
   @override
@@ -28,6 +28,8 @@ class NumberSquare extends StatefulWidget {
 }
 
 class _NumberSquareState extends State<NumberSquare> {
+  bool _isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -40,14 +42,14 @@ class _NumberSquareState extends State<NumberSquare> {
             color: Colors.black,
             width: 2.0,
           ),
-          color: widget.active ? Colors.orange : Colors.transparent, // Use widget.active
+          color: _isSelected ? Colors.orange : Color.fromARGB(112, 84, 215, 224),
         ),
         child: Center(
           child: Text(
             '${widget.number}',
             style: TextStyle(
               fontSize: 70,
-              color: widget.active ? Colors.white : Colors.black, // Use widget.active
+              color: _isSelected ? Colors.white : Colors.black,
             ),
           ),
         ),
@@ -56,9 +58,25 @@ class _NumberSquareState extends State<NumberSquare> {
   }
 
   void _toggleSelection() {
-    widget.callback(widget.number); // Pass the number to the callback
+    setState(() {
+      _isSelected = !_isSelected;
+    });
+    widget.callback(widget.number); // Notify parent about the selected number
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isSelected = widget.number == widget.startPos; // Check if the number matches the startPos
+  }
+
+  @override
+  void didUpdateWidget(covariant NumberSquare oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _isSelected = widget.number == widget.startPos; // Update isSelected when widget is updated
   }
 }
+
 class OutlinedCheckbox extends StatefulWidget {
   const OutlinedCheckbox({
     Key? key,
@@ -84,15 +102,11 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth;
+    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight;
+
     return InkWell(
-      onTap: () {
-        setState(() {
-          value = !value;
-        });
-        widget.callback(value);
-      },
+      onTap: _toggleValue, // Changed to _toggleValue
       child: Container(
         width: 50 * widthRatio,
         height: 50 * heightRatio,
@@ -101,7 +115,7 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
             color: Colors.red,
             width: 2.0,
           ),
-          borderRadius: BorderRadius.circular(9.0 ),
+          borderRadius: BorderRadius.circular(9.0),
           color: value ? Colors.orange : Colors.transparent,
         ),
         // child: Center(
@@ -112,6 +126,13 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
         // ),
       ),
     );
+  }
+
+  void _toggleValue() {
+    setState(() {
+      value = !value;
+    });
+    widget.callback(value); // Notify parent about the updated value
   }
 }
 
@@ -255,10 +276,10 @@ class TextInputState extends State<TextInput> {
     double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
 
     return Container(
-      width: 500 * widthRatio,
-      height: 123 * heightRatio,
+      width: 500,
+      height: 123,
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(9.0),
       ),
       child: Column(
@@ -269,7 +290,7 @@ class TextInputState extends State<TextInput> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.title,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
               textAlign: TextAlign.center,
             ),
           ),
@@ -280,6 +301,7 @@ class TextInputState extends State<TextInput> {
               style: const TextStyle(fontSize: 20),
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
+                hintStyle: const TextStyle(color: Colors.black),
                 hintText: 'Enter ${widget.title.toLowerCase()} here...',
               ),
               onChanged: (value) {
@@ -326,7 +348,7 @@ class IncrementState extends State<Increment> {
     return Container(
       width: 250 * widthRatio,
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,

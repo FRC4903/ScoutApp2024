@@ -82,86 +82,102 @@ class _AutoState extends State<Auto> {
                 ],
               ),
             ),
-            Row(
-              children: [
-    NumberSquare(
-          number: 1,
-          active: activeNumber == 1, // Pass whether this number is active
-          callback: (value) => send('StartPos', value),
-        ),
-        NumberSquare(
-          number: 2,
-          active: activeNumber == 2,
-          callback:  (value) => send('StartPos', value),
-        ),
-        NumberSquare(
-          number: 3,
-          active: activeNumber == 3,
-          callback:  (value) => send('StartPos', value),
-        ),
-        NumberSquare(
-          number: 4,
-          active: activeNumber == 4,
-          callback:  (value) => send('StartPos', value),
-        ),
-              ],
+            Column(
+ children: [
+            NumberSquare(
+              number: 1,
+              startPos: widget.inputs['StartPos'], // Pass the StartPos to NumberSquare
+              callback: _handleNumberSquareCallback,
             ),
-            // Stack(
-            //   alignment: Alignment.centerRight,
-            //   children: [
-            //     Positioned(
-            //       top: 65 * heightRatio,
-            //       left: 210 * widthRatio,
-            //       child: Column(
-            //         children: List.generate(
-            //           3,
-            //           (index) => Column(
-            //             children: [
-            //               OutlinedCheckbox(
-            //                 callback: (value) {
-            //                   setState(() {
-            //                     closeNoteStates[index] = value;
-            //                   });
-            //                   updateInputs();
-            //                 },
-            //                 initial: closeNoteStates[index],
-            //               ),
-            //               SizedBox(
-            //                 height: 47 * heightRatio,
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Positioned(
-            //       top: 35 * heightRatio,
-            //       left: 570 * widthRatio,
-            //       child: Column(
-            //         mainAxisAlignment: MainAxisAlignment.start,
-            //         children: List.generate(
-            //           5,
-            //           (index) => Column(
-            //             children: [
-            //               OutlinedCheckbox(
-            //                 callback: (value) {
-            //                   setState(() {
-            //                     centerNoteStates[index] = value;
-            //                   });
-            //                   updateInputs();
-            //                 },
-            //                 initial: centerNoteStates[index],
-            //               ),
-            //               SizedBox(
-            //                 height: 62 * heightRatio,
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
+            NumberSquare(
+              number: 2,
+              startPos: widget.inputs['StartPos'],
+              callback: _handleNumberSquareCallback,
+            ),
+            NumberSquare(
+              number: 3,
+              startPos: widget.inputs['StartPos'],
+              callback: _handleNumberSquareCallback,
+            ),
+            NumberSquare(
+              number: 4,
+              startPos: widget.inputs['StartPos'],
+              callback: _handleNumberSquareCallback,
+            ),
+          ],
+            ),
+Stack(
+  alignment: Alignment.centerRight,
+  children: [
+    Positioned(
+      top: 65 * heightRatio,
+      left: 210 * widthRatio,
+      child: Column(
+        children: [
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote0', value),
+            initial: widget.inputs['closeNote0'],
+          ),
+          SizedBox(
+            height: 47 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote1', value),
+            initial: widget.inputs['closeNote1'],
+          ),
+          SizedBox(
+            height: 47 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('closeNote2', value),
+            initial: widget.inputs['closeNote2'],
+          ),
+        ],
+      ),
+    ),
+    Positioned(
+      top: 35 * heightRatio,
+      left: 570 * widthRatio,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote0', value),
+            initial: widget.inputs['centerNote0'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote1', value),
+            initial: widget.inputs['centerNote1'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote2', value),
+            initial: widget.inputs['centerNote2'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote3', value),
+            initial: widget.inputs['centerNote3'],
+          ),
+          SizedBox(
+            height: 62 * heightRatio,
+          ),
+          OutlinedCheckbox(
+            callback: (value) => send('centerNote4', value),
+            initial: widget.inputs['centerNote4'],
+          ),
+        ],
+      ),
+    ),
+  ],
+),
           ],
         );
       },
@@ -185,7 +201,12 @@ class _AutoState extends State<Auto> {
     //   'centerNote4': centerNoteStates[4],
 
     // });
-
+void _handleNumberSquareCallback(int selectedNumber) {
+    setState(() {
+      widget.inputs['StartPos'] = selectedNumber; // Update StartPos in inputs
+    });
+    widget.callback(widget.inputs);
+  }
     void send(String tag, value) {
     setState(() => widget.inputs[tag] = value);
     widget.callback(widget.inputs);

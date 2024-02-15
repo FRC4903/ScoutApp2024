@@ -13,15 +13,19 @@ class _Endgame extends State<Endgame>
 {
   @override
   Widget build(BuildContext context) {
+    
+
     return SafeArea(
+      
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Parked',
@@ -41,6 +45,7 @@ class _Endgame extends State<Endgame>
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Won',
@@ -52,27 +57,34 @@ class _Endgame extends State<Endgame>
                     title: 'Harmony',
                     initial: widget.inputs['Harmony'],
                     callback: (value) => send('Harmony', value),
-                  ),
+                  )
+                
+
+  
                 ],
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Increment(
                     title: 'Human Player Attempts',
                     value: widget.inputs['HumanAttempts'],
                     callback: (value) => send('HumanAttempts', value),
                   ),
+                  SizedBox(width: 25),
                   Increment(
                     title: 'Human Player Successes',
                     value: widget.inputs['HumanPlayerSuccess'],
                     callback: (value) => send('HumanPlayerSuccess', value),
                   ),
+                  SizedBox(width: 25),
                   Increment(
                     title: 'Ranking Points',
                     value: widget.inputs['RP'],
                     callback: (value) => send('RP', value),
                   ),
+                  SizedBox(width: 25),
                   Increment(
                     title: 'NoteInTrap',
                     value: widget.inputs['NoteInTrap'],
@@ -80,6 +92,23 @@ class _Endgame extends State<Endgame>
                   ),
                 ],
               ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   SizedBox(width: 530, height: 175, child: TextInput(
+                    title: 'Reliabality Comments', 
+                    callback: (value) => send('ReliabalityComments', value), 
+                    initial: widget.inputs['ReliabalityComments'])),
+                  SizedBox(width: 25),
+                  SizedBox(width: 530, height: 175, child: TextInput(
+                    title: 'Comments for all 3', 
+                    callback: (value) => send('Comments', value), 
+                    initial: widget.inputs['Comments'])),
+                ],
+              )
+          
+                
             ],
           ),
         ),

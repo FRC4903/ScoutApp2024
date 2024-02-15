@@ -298,7 +298,7 @@ class TextInputState extends State<TextInput> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: textController,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 hintStyle: const TextStyle(color: Colors.black),

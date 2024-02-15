@@ -22,9 +22,10 @@ class _Endgame extends State<Endgame>
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Parked',
@@ -44,6 +45,7 @@ class _Endgame extends State<Endgame>
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Won',
@@ -63,6 +65,7 @@ class _Endgame extends State<Endgame>
               ),
               const SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Increment(
                     title: 'Human Player Attempts',
@@ -91,6 +94,7 @@ class _Endgame extends State<Endgame>
               ),
               SizedBox(height: 20),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    SizedBox(width: 530, height: 175, child: TextInput(
                     title: 'Reliabality Comments', 

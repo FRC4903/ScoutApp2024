@@ -36,10 +36,10 @@ class QRCodeWidget extends StatelessWidget {
               child: QrImageView(
                 data: qrCodeGenerator.generateQRCode(),
                 version: QrVersions.auto,
-                size: 600,
+                size: 800,
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 40),
                     ],
         ),
       ),

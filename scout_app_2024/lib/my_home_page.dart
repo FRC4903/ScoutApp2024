@@ -62,7 +62,6 @@ var inputs = {
   'centerNote2': false,
   'centerNote3': false,
   'centerNote4': false,
-  'ReliabalityComments': '',
   'Comments': ''
 };
 

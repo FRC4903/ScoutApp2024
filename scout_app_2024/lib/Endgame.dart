@@ -47,6 +47,7 @@ class _Endgame extends State<Endgame>
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  
                   CheckboxInput(
                     title: 'Won',
                     initial: widget.inputs['Won'],
@@ -64,6 +65,7 @@ class _Endgame extends State<Endgame>
                 ],
               ),
               const SizedBox(height: 20),
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -85,26 +87,34 @@ class _Endgame extends State<Endgame>
                     callback: (value) => send('RP', value),
                   ),
                   SizedBox(width: 25),
-                  Increment(
-                    title: 'NoteInTrap',
-                    value: widget.inputs['NoteInTrap'],
-                    callback: (value) => send('NoteInTrap', value),
-                  ),
+                  Container(decoration: BoxDecoration(
+                    border: Border.all(color: Colors.amber, width: 3), 
+                    borderRadius: BorderRadius.circular(9.0)),
+                    child:  Increment(
+                        title: 'NoteInTrap',
+                        value: widget.inputs['NoteInTrap'],
+                        callback: (value) => send('NoteInTrap', value)
+                      )
+                    ),
                 ],
               ),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+              
                 children: [
-                   SizedBox(width: 530, height: 175, child: TextInput(
-                    title: 'Reliabality Comments', 
-                    callback: (value) => send('ReliabalityComments', value), 
-                    initial: widget.inputs['ReliabalityComments'])),
+                  Container(decoration: BoxDecoration(
+                    border: Border.all(color: Colors.amber, width: 3), 
+                    borderRadius: BorderRadius.circular(9.0)),
+                    child: SizedBox(width: 530, height: 175, 
+                      child: TextInput(
+                        title: 'Comments', 
+                        callback: (value) => send('Comments', value), 
+                        initial: widget.inputs['Comments'])
+                        )
+                      ),
+              
                   SizedBox(width: 25),
-                  SizedBox(width: 530, height: 175, child: TextInput(
-                    title: 'Comments for all 3', 
-                    callback: (value) => send('Comments', value), 
-                    initial: widget.inputs['Comments'])),
                 ],
               )
           

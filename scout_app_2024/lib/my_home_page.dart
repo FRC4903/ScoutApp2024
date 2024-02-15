@@ -19,7 +19,8 @@ class _MyHomePageState extends State<MyHomePage> {
 var inputs = {
   'team': '',
   'ScouterName': "",
-  'MatchNumber': "",
+  'MatchNumber': "",  
+  'Colour': "",
   'StartPos': -1,
   'Taxi': false,
   'AutoGroundPickup': 0,
@@ -52,7 +53,6 @@ var inputs = {
   'HumanAttempts': 0,
   'autoAmpScore': 0,
   'autoSpeakerScore': 0,
-  'taxi': false,
   'PreLoaded': false,
   'closeNote0': false,
   'closeNote1': false,

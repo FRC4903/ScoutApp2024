@@ -3,7 +3,7 @@ import 'my_app.dart';
 import 'dart:ui';
 
 // To resize the window
-import 'package:desktop_window/desktop_window.dart';
+//import 'package:desktop_window/desktop_window.dart';
 
 // Set the desired window size (e.g., 800x600)
 
@@ -11,7 +11,7 @@ import 'package:desktop_window/desktop_window.dart';
 void main() {
   //test
   // Size size = DesktopWindow.getWindowSize() as Size;
-  DesktopWindow.setWindowSize(Size(600, 1024));
+  //DesktopWindow.setWindowSize(Size(600, 1024));
   runApp(const MyApp());
 }
 // import 'package:flutter/material.dart';

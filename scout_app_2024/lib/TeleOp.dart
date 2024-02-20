@@ -61,17 +61,17 @@ class _TeloOpState extends State<TeloOp> {
                 children: [
                   
                   Increment(
-                    title: 'ScoringAmplifiedSpeaker',
+                    title: 'Amped Speaker Score',
                     value: widget.inputs['ScoringAmplifiedSpeaker'],
                     callback: (value) => send('ScoringAmplifiedSpeaker', value),
                   ),
                   Increment(
-                    title: 'ScoringUnAmpedSpeaker',
+                    title: 'UnAmped Speaker Score',
                     value: widget.inputs['ScoringUnAmpedSpeaker'],
                     callback: (value) => send('ScoringUnAmpedSpeaker', value),
                   ),
                   Increment(
-                    title: 'ScoringAmp',
+                    title: 'Amp Score',
                     value: widget.inputs['ScoringAmp'],
                     callback: (value) => send('ScoringAmp', value),
                   ),

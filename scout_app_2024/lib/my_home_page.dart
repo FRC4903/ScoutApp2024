@@ -20,7 +20,6 @@ var inputs = {
   'team': '',
   'ScouterName': "",
   'MatchNumber': "",  
-  'Colour': "",
   'StartPos': -1,
   'Taxi': false,
   'AutoGroundPickup': 0,
@@ -69,7 +68,7 @@ var inputs = {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Page Slider App'),
+        title: const Text('4903 Scout App'),
       ),
       body: PageView(
         controller: _pageController,

@@ -26,6 +26,23 @@ class _Endgame extends State<Endgame>
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+              
+                children: [
+                  // Container(decoration: BoxDecoration(
+                    // border: Border.all(color: Colors.amber, width: 3), 
+                    // borderRadius: BorderRadius.circular(9.0)),
+                    SizedBox(width: 530, height: 105, 
+                      child: TextInput(
+                        title: 'Comments', 
+                        callback: (value) => send('Comments', value), 
+                        initial: widget.inputs['Comments'])
+                        ),
+                      // ),              
+                  SizedBox(width: 25),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CheckboxInput(
                     title: 'Parked',
@@ -69,29 +86,30 @@ class _Endgame extends State<Endgame>
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  
                   Increment(
-                    title: 'Human Player Attempts',
+                    title: 'Human Attempts',
                     value: widget.inputs['HumanAttempts'],
                     callback: (value) => send('HumanAttempts', value),
                   ),
-                  SizedBox(width: 25),
+                  // SizedBox(width: 2),
                   Increment(
-                    title: 'Human Player Successes',
+                    title: 'Human Success',
                     value: widget.inputs['HumanPlayerSuccess'],
                     callback: (value) => send('HumanPlayerSuccess', value),
                   ),
-                  SizedBox(width: 25),
+                  // SizedBox(width: 25),
                   Increment(
                     title: 'Ranking Points',
                     value: widget.inputs['RP'],
                     callback: (value) => send('RP', value),
                   ),
-                  SizedBox(width: 25),
+                  // SizedBox(width: 25),
                   Container(decoration: BoxDecoration(
-                    border: Border.all(color: Colors.amber, width: 3), 
+                    // border: Border.all(color: Colors.amber, width: 3), 
                     borderRadius: BorderRadius.circular(9.0)),
                     child:  Increment(
-                        title: 'NoteInTrap',
+                        title: 'Trap',
                         value: widget.inputs['NoteInTrap'],
                         callback: (value) => send('NoteInTrap', value)
                       )
@@ -99,25 +117,6 @@ class _Endgame extends State<Endgame>
                 ],
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-              
-                children: [
-                  Container(decoration: BoxDecoration(
-                    border: Border.all(color: Colors.amber, width: 3), 
-                    borderRadius: BorderRadius.circular(9.0)),
-                    child: SizedBox(width: 530, height: 175, 
-                      child: TextInput(
-                        title: 'Comments', 
-                        callback: (value) => send('Comments', value), 
-                        initial: widget.inputs['Comments'])
-                        )
-                      ),
-              
-                  SizedBox(width: 25),
-                ],
-              )
-          
                 
             ],
           ),

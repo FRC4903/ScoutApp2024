@@ -55,6 +55,7 @@ class _AutoState extends State<Auto> {
             ),
             Positioned(
               left: (initialScreenWidth / 2 + initialScreenHeight / 6) * widthRatio,
+              top: (initialScreenHeight/2 - initialScreenHeight/3) * widthRatio,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,8 +83,12 @@ class _AutoState extends State<Auto> {
                 ],
               ),
             ),
-            Column(
+            Positioned(
+              left: 40,
+              child:  Column(
+           
  children: [
+
             NumberSquare(
               number: 1,
               startPos: widget.inputs['StartPos'], // Pass the StartPos to NumberSquare
@@ -99,13 +104,17 @@ class _AutoState extends State<Auto> {
               startPos: widget.inputs['StartPos'],
               callback: _handleNumberSquareCallback,
             ),
-            NumberSquare(
+          ],
+          )
+            ),
+            Positioned(
+              left: 40,
+              bottom: 70,
+              child:             NumberSquare(
               number: 4,
               startPos: widget.inputs['StartPos'],
               callback: _handleNumberSquareCallback,
-            ),
-          ],
-            ),
+            ),),
 Stack(
   alignment: Alignment.centerRight,
   children: [

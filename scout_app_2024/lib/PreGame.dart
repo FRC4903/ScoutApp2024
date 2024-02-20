@@ -41,7 +41,7 @@ class _PreGameState extends State<PreGame> {
                   SizedBox(
                     width: 150,
                     child: CustomDropdown(
-                      options: const ['256', '4903', '1114', '2056', '8081', '63', '2025', '2', '3', '5', '23', '3', '25'],
+                      options: const ['256', '4903', '1114', '2056', '8081', '63', '2025', '201', '123', '3521', '2233', '3553', '6259'],
                       callback: (value) => send('team', value),
                       initialValue: widget.inputs['team'].toString(),
                       label: "Team",
@@ -51,7 +51,7 @@ class _PreGameState extends State<PreGame> {
                   SizedBox(
                     width: 150,
                     child: CustomDropdown(
-                      options: const ['1', '3', '5', '6', '11', '12', ',42', '45', '56', '58', '72'],
+                      options: const ['1', '3', '5', '6', '11', '12', '42', '45', '56', '58', '72'],
                       callback: (value) => send('MatchNumber', value),
                       initialValue: widget.inputs['MatchNumber'].toString(),
                       label: "Match",

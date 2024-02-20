@@ -5,8 +5,8 @@ typedef StringCallback = void Function(String value);
 typedef BoolCallback = void Function(bool value);
 
 
-const double initialScreenWidth = 1265;
-const double initialScreenHeight = 682;
+const double initialScreenWidth = 1200;
+const double initialScreenHeight = 600;
 
 
 class NumberSquare extends StatefulWidget {
@@ -346,7 +346,7 @@ class IncrementState extends State<Increment> {
     double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
 
     return Container(
-      width: 230,
+      width: 240,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 133, 124, 124),
         borderRadius: BorderRadius.circular(9.0),

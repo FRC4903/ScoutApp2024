@@ -35,8 +35,8 @@ class _NumberSquareState extends State<NumberSquare> {
     return InkWell(
       onTap: _toggleSelection,
       child: Container(
-        width: 150,
-        height: 150,
+        width: 100,
+        height: 100,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.black,
@@ -178,11 +178,11 @@ class CustomDropdownState extends State<CustomDropdown> {
             height: 50 * heightRatio,
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.black,
+                color: const Color.fromARGB(255, 133, 124, 124),
                 width: 2.0,
               ),
               borderRadius: BorderRadius.circular(9.0),
-              color: Colors.transparent,
+              color: Color.fromARGB(255, 128, 116, 116),
             ),
             child: Center(
               child: Text(
@@ -211,7 +211,7 @@ void showDropdown(BuildContext context) {
 
   showMenu(
     context: context,
-    position: RelativeRect.fromLTRB(position.dx, position.dy + 50, position.dx + 150, position.dy + 200),
+    position: RelativeRect.fromLTRB(position.dx + 20, position.dy + 50, position.dx + 150, position.dy + 200),
     items: <PopupMenuEntry<String>>[ // Explicitly specify the type here
       PopupMenuItem<String>(
         value: 'custom_dropdown_scroll_view',
@@ -286,16 +286,16 @@ class TextInputState extends State<TextInput> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   // child: Text(
+          //   //   widget.title,
+          //   //   style: const TextStyle(fontSize: 20, color: Colors.black),
+          //   //   textAlign: TextAlign.center,
+          //   // ),
+          // ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              widget.title,
-              style: const TextStyle(fontSize: 20, color: Colors.black),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: TextField(
               controller: textController,
               style: const TextStyle(fontSize: 20, color: Colors.black),
@@ -346,9 +346,9 @@ class IncrementState extends State<Increment> {
     double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
 
     return Container(
-      width: 250 * widthRatio,
+      width: 230,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 133, 124, 124),
         borderRadius: BorderRadius.circular(9.0),
         border: Border.all(
           color: Colors.black,
@@ -356,9 +356,9 @@ class IncrementState extends State<Increment> {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
           Text(
             widget.title,
             style: const TextStyle(
@@ -367,7 +367,7 @@ class IncrementState extends State<Increment> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -394,7 +394,7 @@ class IncrementState extends State<Increment> {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
         ],
       ),
     );
@@ -449,7 +449,7 @@ class TextState extends State<TextInput> {
       width: 500,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: const Color.fromARGB(255, 133, 124, 124),
         borderRadius: BorderRadius.circular(9.0),
       ),
       child: TextField(
@@ -520,3 +520,62 @@ class CheckboxInputState extends State<CheckboxInput> {
   }
 }
 
+
+
+class RedBlueToggle extends StatefulWidget {
+  const RedBlueToggle({
+    Key? key,
+    required this.title,
+    required this.callback,
+    this.initial = false,
+  }) : super(key: key);
+
+  final String title;
+  final BoolCallback callback;
+  final bool initial;
+
+
+  @override
+  State<RedBlueToggle> createState() => _RedBlueToggleState();
+}
+
+class _RedBlueToggleState extends State<RedBlueToggle> {
+  late bool value;
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.initial;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: _toggleValue,
+      child: Row(
+        children: [
+          Container(
+            width: 24,
+            height: 24,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: value ? Colors.red : Colors.blue,
+            ),
+          ),
+          SizedBox(width: 8),
+          Text(
+            widget.title,
+            style: const TextStyle(fontSize: 20),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _toggleValue() {
+    setState(() {
+      value = !value;
+    });
+    widget.callback(value);
+  }
+}

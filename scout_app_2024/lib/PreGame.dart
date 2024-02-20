@@ -18,8 +18,8 @@ class _PreGameState extends State<PreGame> {
     double initialScreenHeight = MediaQuery.of(context).size.height;
 
     // Print the initial height and width of the screen
-    print('Initial Screen Width: $initialScreenWidth');
-    print('Initial Screen Height: $initialScreenHeight');
+    // print('Initial Screen Width: $initialScreenWidth');
+    // print('Initial Screen Height: $initialScreenHeight');
     return SafeArea(
       
       child: Center(
@@ -56,12 +56,7 @@ class _PreGameState extends State<PreGame> {
                       initialValue: widget.inputs['MatchNumber'].toString(),
                       label: "Match",
                     ),
-                  ),
-                 Text(
-            'Initial Screen Size: ${initialScreenWidth.toInt()} x ${initialScreenHeight.toInt()}',
-            style: TextStyle(fontSize: 24),
-          ),
-                
+                  ),          
                 ],
               ),
             ],

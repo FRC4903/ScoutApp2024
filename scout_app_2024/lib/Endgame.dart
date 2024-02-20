@@ -17,6 +17,7 @@ class _Endgame extends State<Endgame>
 
     return SafeArea(
       child: Center(
+         
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -24,6 +25,7 @@ class _Endgame extends State<Endgame>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
+                
                 mainAxisAlignment: MainAxisAlignment.center,
               
                 children: [
@@ -32,7 +34,8 @@ class _Endgame extends State<Endgame>
                     // borderRadius: BorderRadius.circular(9.0)),
                     SizedBox(width: 530, height: 105, 
                       child: TextInput(
-                        title: 'Comments', 
+                        
+                        title: 'Comment', 
                         callback: (value) => send('Comments', value), 
                         initial: widget.inputs['Comments'])
                         ),

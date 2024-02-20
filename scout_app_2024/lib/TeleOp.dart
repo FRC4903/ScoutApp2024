@@ -53,6 +53,11 @@ class _TeloOpState extends State<TeloOp> {
                     initial: widget.inputs['Defended'],
                     callback: (value) => send('Defended', value),
                   ),
+                  CheckboxInput(
+                    title: 'Under Stage',
+                    initial: widget.inputs['UnderStage'],
+                    callback: (value) => send('UnderStage', value),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -61,12 +66,12 @@ class _TeloOpState extends State<TeloOp> {
                 children: [
                   
                   Increment(
-                    title: 'Amped Speaker Score',
+                    title: 'Amped Speaker',
                     value: widget.inputs['ScoringAmplifiedSpeaker'],
                     callback: (value) => send('ScoringAmplifiedSpeaker', value),
                   ),
                   Increment(
-                    title: 'UnAmped Speaker Score',
+                    title: 'Unamped Speaker',
                     value: widget.inputs['ScoringUnAmpedSpeaker'],
                     callback: (value) => send('ScoringUnAmpedSpeaker', value),
                   ),
@@ -74,6 +79,22 @@ class _TeloOpState extends State<TeloOp> {
                     title: 'Amp Score',
                     value: widget.inputs['ScoringAmp'],
                     callback: (value) => send('ScoringAmp', value),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  
+                  Increment(
+                    title: 'Speaker Shots',
+                    value: widget.inputs['ScoringAmplifiedSpeaker'],
+                    callback: (value) => send('ScoringAmplifiedSpeaker', value),
+                  ),
+                  Increment(
+                    title: 'Amp Shots',
+                    value: widget.inputs['ScoringUnAmpedSpeaker'],
+                    callback: (value) => send('ScoringUnAmpedSpeaker', value),
                   ),
                 ],
               ),

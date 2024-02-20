@@ -16,7 +16,6 @@ class _Endgame extends State<Endgame>
     
 
     return SafeArea(
-      
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -75,30 +74,28 @@ class _Endgame extends State<Endgame>
                     title: 'Harmony',
                     initial: widget.inputs['Harmony'],
                     callback: (value) => send('Harmony', value),
+                  ),
+                                  CheckboxInput(
+                    title: 'Broke',
+                    initial: widget.inputs['Broke'],
+                    callback: (value) => send('Broke', value),
+                  ),
+                    CheckboxInput(
+                    title: 'SpotLight',
+                    initial: widget.inputs['Broke'],
+                    callback: (value) => send('SpotLight', value),
                   )
-                
 
   
                 ],
               ),
+              
               const SizedBox(height: 20),
               
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
-                  Increment(
-                    title: 'Human Attempts',
-                    value: widget.inputs['HumanAttempts'],
-                    callback: (value) => send('HumanAttempts', value),
-                  ),
-                  // SizedBox(width: 2),
-                  Increment(
-                    title: 'Human Success',
-                    value: widget.inputs['HumanPlayerSuccess'],
-                    callback: (value) => send('HumanPlayerSuccess', value),
-                  ),
-                  // SizedBox(width: 25),
+              
                   Increment(
                     title: 'Ranking Points',
                     value: widget.inputs['RP'],

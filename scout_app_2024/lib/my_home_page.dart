@@ -45,9 +45,6 @@ var inputs = {
   'SpotLight' : false,
   'RP': 0,
   'Won': false,
-  'CommentsAuto': '',
-  'CommentsTeleop': '',
-  'CommentsEndgame': '',
   'Parked': false,
   'OnStageClimb': false,
   'NoteInTrap': 0,
@@ -62,7 +59,10 @@ var inputs = {
   'centerNote2': false,
   'centerNote3': false,
   'centerNote4': false,
-  'Comments': ''
+  'ReliabilityComments': "",
+  'AutoComments': ""
+,  'TeleOpComments': ""
+
 };
 
   @override

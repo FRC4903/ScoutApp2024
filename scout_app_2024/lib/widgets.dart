@@ -102,8 +102,8 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth;
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight;
+    double widthRatio = 1;//MediaQuery.of(context).size.width / initialScreenWidth;
+    double heightRatio = 1;//MediaQuery.of(context).size.height / initialScreenHeight;
 
     return InkWell(
       onTap: _toggleValue, // Changed to _toggleValue
@@ -276,11 +276,11 @@ class TextInputState extends State<TextInput> {
     double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
 
     return Container(
-      width: 500,
-      height: 123,
+      width: 400,
+      height: 100,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(9.0),
+        color: Color.fromARGB(255, 178, 178, 178),
+        borderRadius: BorderRadius.circular(18.0),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -295,7 +295,7 @@ class TextInputState extends State<TextInput> {
           //   // ),
           // ),
           Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(1.0),
             child: TextField(
               controller: textController,
               style: const TextStyle(fontSize: 20, color: Colors.black),

@@ -36,7 +36,7 @@ class _AutoState extends State<Auto> {
   @override
   Widget build(BuildContext context) {
     double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth;
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight;
+    double heightRatio = 1;//MediaQuery.of(context).size.height / initialScreenHeight;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -53,36 +53,40 @@ class _AutoState extends State<Auto> {
                 fit: BoxFit.fill,
               ),
             ),
-            Positioned(
-              left: (initialScreenWidth / 2 + initialScreenHeight / 6) * widthRatio,
-              top: (initialScreenHeight/2 - initialScreenHeight/3) * widthRatio,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Increment(
-                    title: 'Auto Amp Score',
-                    value: widget.inputs['AutoAmpScore'],
-                    callback: (value) => send('AutoAmpScore', value),
-                  ),
-                  Increment(
-                    title: 'Auto Speaker Score',
-                    value: widget.inputs['AutoSpeakerScore'],
-                    callback: (value) => send('AutoSpeakerScore', value),
-                  ),
-                  CheckboxInput(
-                    title: 'Taxi',
-                    initial: widget.inputs['Taxi'],
-                    callback: (value) => send('Taxi', value),
-                  ),
-                  CheckboxInput(
-                    title: 'Preloaded',
-                    initial: widget.inputs['PreLoaded'],
-                    callback: (value) => send('PreLoaded', value),
-                  ),
-                ],
-              ),
-            ),
+Positioned(
+  left: (initialScreenWidth / 2 + initialScreenHeight / 4) * widthRatio,
+  top: (initialScreenHeight/2 - initialScreenHeight/4) * widthRatio,
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Increment(
+        title: 'Auto Amp Score',
+        value: widget.inputs['AutoAmpScore'],
+        callback: (value) => send('AutoAmpScore', value),
+      ),
+      SizedBox(height: 10), // Adding padding between elements
+      Increment(
+        title: 'Auto Speaker Score',
+        value: widget.inputs['AutoSpeakerScore'],
+        callback: (value) => send('AutoSpeakerScore', value),
+      ),
+      SizedBox(height: 10), // Adding padding between elements
+      CheckboxInput(
+        title: 'Taxi',
+        initial: widget.inputs['Taxi'],
+        callback: (value) => send('Taxi', value),
+      ),
+      SizedBox(height: 10), // Adding padding between elements
+      CheckboxInput(
+        title: 'Preloaded',
+        initial: widget.inputs['PreLoaded'],
+        callback: (value) => send('PreLoaded', value),
+      ),
+    ],
+  ),
+),
+
             Positioned(
               left: 40,
               child:  Column(
@@ -119,8 +123,8 @@ Stack(
   alignment: Alignment.centerRight,
   children: [
     Positioned(
-      top: 65 * heightRatio,
-      left: 210 * widthRatio,
+      top: 61 * heightRatio,
+      left: 195 * widthRatio,
       child: Column(
         children: [
           OutlinedCheckbox(
@@ -128,14 +132,14 @@ Stack(
             initial: widget.inputs['closeNote0'],
           ),
           SizedBox(
-            height: 47 * heightRatio,
+            height: 43 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('closeNote1', value),
             initial: widget.inputs['closeNote1'],
           ),
           SizedBox(
-            height: 47 * heightRatio,
+            height: 43 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('closeNote2', value),
@@ -145,8 +149,8 @@ Stack(
       ),
     ),
     Positioned(
-      top: 35 * heightRatio,
-      left: 570 * widthRatio,
+      top: 32 * heightRatio,
+      left: 532 * widthRatio,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -155,28 +159,28 @@ Stack(
             initial: widget.inputs['centerNote0'],
           ),
           SizedBox(
-            height: 62 * heightRatio,
+            height: 58 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('centerNote1', value),
             initial: widget.inputs['centerNote1'],
           ),
           SizedBox(
-            height: 62 * heightRatio,
+            height: 58 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('centerNote2', value),
             initial: widget.inputs['centerNote2'],
           ),
           SizedBox(
-            height: 62 * heightRatio,
+            height: 58 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('centerNote3', value),
             initial: widget.inputs['centerNote3'],
           ),
           SizedBox(
-            height: 62 * heightRatio,
+            height: 58 * heightRatio,
           ),
           OutlinedCheckbox(
             callback: (value) => send('centerNote4', value),

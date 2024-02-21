@@ -16,7 +16,9 @@ class _Endgame extends State<Endgame>
     
 
     return SafeArea(
-  child: Stack(
+  child: Padding(
+    padding: const EdgeInsets.all(30.0),
+    child: Stack(
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,15 +31,18 @@ class _Endgame extends State<Endgame>
                   title: 'Parked',
                   initial: widget.inputs['Parked'],
                   callback: (value) => send('Parked', value),
-                ),
+                ),                SizedBox(width: 20,),
+
                 const SizedBox(width: 20),
                 CheckboxInput(
                   title: 'Climb',
                   initial: widget.inputs['OnStageClimb'],
                   callback: (value) => send('OnStageClimb', value),
-                )
-                ,]
-            ),
+                )           ,     SizedBox(width: 20,),
+
+                ]
+            ),            const SizedBox(width: 20,height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -46,14 +51,16 @@ class _Endgame extends State<Endgame>
                   initial: widget.inputs['Broke'],
                   callback: (value) => send('SpotLight', value),
                 ),
+                SizedBox(width: 20,),
                 CheckboxInput(
                   title: 'Won',
                   initial: widget.inputs['Won'],
                   callback: (value) => send('Won', value),
-                ),
+                ),                SizedBox(width: 20,),
+
               ],
-            ),
-            const SizedBox(height: 20),
+            ),            const SizedBox(width: 20,height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -63,16 +70,18 @@ class _Endgame extends State<Endgame>
                   title: 'Harmony',
                   initial: widget.inputs['Harmony'],
                   callback: (value) => send('Harmony', value),
-                ),
+                ),                SizedBox(width: 20,),
+
                 CheckboxInput(
                   title: 'Broke',
                   initial: widget.inputs['Broke'],
                   callback: (value) => send('Broke', value),
-                ),
+                ),                SizedBox(width: 20,),
+
 
               ],
-            ),
-            const SizedBox(height: 20),
+            ),            const SizedBox(width: 20,height: 20),
+
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -119,7 +128,7 @@ class _Endgame extends State<Endgame>
         ),
       ],
     ),
-  // ),
+  ),
 );
 
   }

@@ -136,6 +136,7 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
   }
 }
 
+
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown({
     Key? key,
@@ -206,7 +207,13 @@ class CustomDropdownState extends State<CustomDropdown> {
               hintText: 'Search...',
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
             ),
-            onChanged: _onSearchTextChanged,
+            onChanged: (value) {
+              setState(() {
+                selectedOption = value;
+              });
+              widget.callback(selectedOption); // Send the entered text in the callback
+              _onSearchTextChanged(value); // Update the filtered options based on the search text
+            },
           ),
           SizedBox(height: 10),
           SizedBox(
@@ -250,6 +257,7 @@ class CustomDropdownState extends State<CustomDropdown> {
     super.dispose();
   }
 }
+
 class TextInput extends StatefulWidget {
   const TextInput({
     Key? key,

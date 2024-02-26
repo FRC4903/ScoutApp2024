@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'my_app.dart';
-import 'dart:ui';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 // To resize the window
-import 'package:desktop_window/desktop_window.dart';
+// import 'package:desktop_window/desktop_window.dart';
 
 // Set the desired window size (e.g., 800x600)
 
@@ -12,7 +11,7 @@ import 'package:desktop_window/desktop_window.dart';
 void main() {
   //test
   // Size size = DesktopWindow.getWindowSize() as Size;
-  DesktopWindow.setWindowSize(Size(1200, 600));
+  // DesktopWindow.setWindowSize(Size(1024, 300));
   runApp(
     Phoenix(child: const MyApp()));
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import "qr_code.dart";
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 typedef StringCallback = void Function(String value);
 
@@ -25,7 +24,7 @@ class PostGame extends StatelessWidget {
 
 
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white
             ),
             child: QrImageView(
@@ -38,13 +37,13 @@ class PostGame extends StatelessWidget {
             height: 40,
             width: 400,
             child: MaterialButton(
-              child: Text("Reset"),
-              shape: StadiumBorder(
+              shape: const StadiumBorder(
                 side: BorderSide(color: Colors.black),
               ),
             onPressed: () {
               Phoenix.rebirth(context);
-            })
+            },
+              child: const Text("Reset"))
             )
         ],
       ),

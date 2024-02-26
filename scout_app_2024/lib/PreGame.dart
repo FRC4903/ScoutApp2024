@@ -24,9 +24,9 @@ class _PreGameState extends State<PreGame> {
       
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center, // Center everything horizontally
             children: [
               TextInput(
@@ -41,7 +41,7 @@ class _PreGameState extends State<PreGame> {
                   SizedBox(
                     width: 150,
                     child: CustomDropdown(
-                      options: const ['256', '4903', '1114', '2056', '8081', '63', '2025', '201', '123', '3521', '2233', '3553', '6259'],
+                      options: const ['256', '4903', '1114', '2056', '8081','2903','2024','1867','1984', '63', '2025', '201', '123', '3521', '2233', '3553', '6259', 'Ex1', 'Ex2', 'Ex3', 'Ex4', 'Ex5'],
                       callback: (value) => send('team', value),
                       initialValue: widget.inputs['team'].toString(),
                       label: "Team",
@@ -51,7 +51,7 @@ class _PreGameState extends State<PreGame> {
                   SizedBox(
                     width: 150,
                     child: CustomDropdown(
-                      options: const ['1', '3', '5', '6', '11', '12', '42', '45', '56', '58', '72'],
+                      options: const ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100'],
                       callback: (value) => send('MatchNumber', value),
                       initialValue: widget.inputs['MatchNumber'].toString(),
                       label: "Match",

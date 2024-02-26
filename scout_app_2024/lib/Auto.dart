@@ -35,8 +35,8 @@ class _AutoState extends State<Auto> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth;
-    double heightRatio = 1;//MediaQuery.of(context).size.height / initialScreenHeight;
+    double widthRatio = MediaQuery.of(context).size.width;// / initialScreenWidth;
+    double heightRatio = MediaQuery.of(context).size.height;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -46,16 +46,16 @@ class _AutoState extends State<Auto> {
         return Stack(
           children: [
             SizedBox(
-              width: widthRatio * initialScreenWidth / 2,
-              height: heightRatio * initialScreenHeight,
+              width: widthRatio/2,
+              height: heightRatio,
               child: Image.asset(
                 "images/2024Field.png",
                 fit: BoxFit.fill,
               ),
             ),
 Positioned(
-  left: (initialScreenWidth / 2 + initialScreenHeight / 4) * widthRatio,
-  top: (initialScreenHeight/2 - initialScreenHeight/4) * widthRatio,
+  left:  widthRatio * 0.65,
+  top: heightRatio  * 0.02,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,19 +65,19 @@ Positioned(
         value: widget.inputs['AutoAmpScore'],
         callback: (value) => send('AutoAmpScore', value),
       ),
-      SizedBox(height: 10), // Adding padding between elements
+      const SizedBox(height: 10), // Adding padding between elements
       Increment(
         title: 'Auto Speaker Score',
         value: widget.inputs['AutoSpeakerScore'],
         callback: (value) => send('AutoSpeakerScore', value),
       ),
-      SizedBox(height: 10), // Adding padding between elements
+      const SizedBox(height: 10), // Adding padding between elements
       CheckboxInput(
         title: 'Taxi',
         initial: widget.inputs['Taxi'],
         callback: (value) => send('Taxi', value),
       ),
-      SizedBox(height: 10), // Adding padding between elements
+      const SizedBox(height: 10), // Adding padding between elements
       CheckboxInput(
         title: 'Preloaded',
         initial: widget.inputs['PreLoaded'],
@@ -88,7 +88,8 @@ Positioned(
 ),
 
             Positioned(
-              left: 40,
+              top: widthRatio * 0.015,
+              left: widthRatio*0.036,
               child:  Column(
            
  children: [
@@ -112,8 +113,8 @@ Positioned(
           )
             ),
             Positioned(
-              left: 40,
-              bottom: 70,
+              bottom: widthRatio * 0.042,
+              left: widthRatio*0.036,
               child:             NumberSquare(
               number: 4,
               startPos: widget.inputs['StartPos'],
@@ -123,68 +124,68 @@ Stack(
   alignment: Alignment.centerRight,
   children: [
     Positioned(
-      top: 61 * heightRatio,
-      left: 195 * widthRatio,
+      top: heightRatio * 0.073,
+      left: widthRatio* 0.161,
       child: Column(
         children: [
           OutlinedCheckbox(
-            callback: (value) => send('closeNote0', value),
-            initial: widget.inputs['closeNote0'],
+            callback: (value) => send('a', value),
+            initial: widget.inputs['a'],
           ),
           SizedBox(
-            height: 43 * heightRatio,
+            height: heightRatio * 0.113 - heightRatio * 0.073,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('closeNote1', value),
-            initial: widget.inputs['closeNote1'],
+            callback: (value) => send('b', value),
+            initial: widget.inputs['b'],
           ),
           SizedBox(
-            height: 43 * heightRatio,
+            height: heightRatio * 0.113 - heightRatio * 0.073,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('closeNote2', value),
-            initial: widget.inputs['closeNote2'],
+            callback: (value) => send('c', value),
+            initial: widget.inputs['c'],
           ),
         ],
       ),
     ),
     Positioned(
-      top: 32 * heightRatio,
-      left: 532 * widthRatio,
+      top: heightRatio * 0.032,
+      left: widthRatio* 0.445,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           OutlinedCheckbox(
-            callback: (value) => send('centerNote0', value),
-            initial: widget.inputs['centerNote0'],
+            callback: (value) => send('v', value),
+            initial: widget.inputs['v'],
           ),
           SizedBox(
-            height: 58 * heightRatio,
+            height: heightRatio * 0.090 -heightRatio * 0.032,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('centerNote1', value),
-            initial: widget.inputs['centerNote1'],
+            callback: (value) => send('w', value),
+            initial: widget.inputs['w'],
           ),
           SizedBox(
-            height: 58 * heightRatio,
+            height: heightRatio * 0.090 -heightRatio * 0.032,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('centerNote2', value),
-            initial: widget.inputs['centerNote2'],
+            callback: (value) => send('x', value),
+            initial: widget.inputs['x'],
           ),
           SizedBox(
-            height: 58 * heightRatio,
+            height: heightRatio * 0.090 -heightRatio * 0.032,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('centerNote3', value),
-            initial: widget.inputs['centerNote3'],
+            callback: (value) => send('y', value),
+            initial: widget.inputs['y'],
           ),
           SizedBox(
-            height: 58 * heightRatio,
+            height: heightRatio * 0.090 -heightRatio * 0.032,
           ),
           OutlinedCheckbox(
-            callback: (value) => send('centerNote4', value),
-            initial: widget.inputs['centerNote4'],
+            callback: (value) => send('z', value),
+            initial: widget.inputs['z'],
           ),
         ],
       ),
@@ -197,23 +198,6 @@ Stack(
     );
   }
 
-    // widget.callback({
-    //   'autoAmpScore': autoAmpScore,
-    //   'autoSpeakerScore': autoSpeakerScore,
-    //   'taxi': taxi,
-    //   'preloaded': preloaded,
-    //   'startPos': startPos,
-    //   'closeNote0': closeNoteStates[0],
-    //   'closeNote1': closeNoteStates[1],
-    //   'closeNote2': closeNoteStates[2],
-
-    //   'centerNote0': centerNoteStates[0],
-    //   'centerNote1': centerNoteStates[1],
-    //   'centerNote2': centerNoteStates[2],
-    //   'centerNote3': centerNoteStates[3],
-    //   'centerNote4': centerNoteStates[4],
-
-    // });
 void _handleNumberSquareCallback(int selectedNumber) {
     setState(() {
       widget.inputs['StartPos'] = selectedNumber; // Update StartPos in inputs

@@ -52,17 +52,17 @@ var inputs = {
   'autoAmpScore': 0,
   'autoSpeakerScore': 0,
   'PreLoaded': false,
-  'closeNote0': false,
-  'closeNote1': false,
-  'closeNote2': false,
-  'centerNote0': false,
-  'centerNote1': false,
-  'centerNote2': false,
-  'centerNote3': false,
-  'centerNote4': false,
+  'a': false,
+  'b': false,
+  'c': false,
+  'v': false,
+  'w': false,
+  'x': false,
+  'y': false,
+  'z': false,
   'ReliabilityComments': "",
-  'AutoComments': ""
-,  'TeleOpComments': ""
+  'AutoComments': "",
+  'TeleOpComments': "",
 
 };
 

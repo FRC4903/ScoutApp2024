@@ -35,20 +35,20 @@ class _NumberSquareState extends State<NumberSquare> {
     return InkWell(
       onTap: _toggleSelection,
       child: Container(
-        width: 100,
-        height: 100,
+        width: 90,
+        height: 80,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.black,
             width: 2.0,
           ),
-          color: _isSelected ? Colors.orange : Color.fromARGB(112, 84, 215, 224),
+          color: _isSelected ? Colors.orange : const Color.fromARGB(112, 84, 215, 224),
         ),
         child: Center(
           child: Text(
             '${widget.number}',
             style: TextStyle(
-              fontSize: 70,
+              fontSize: 60,
               color: _isSelected ? Colors.white : Colors.black,
             ),
           ),
@@ -142,13 +142,13 @@ class CustomDropdown extends StatefulWidget {
     required this.options,
     required this.callback,
     required this.initialValue,
-    required this.label
+    required this.label,
   }) : super(key: key);
 
   final List<String> options;
-  final StringCallback callback;
+  final Function(String) callback;
   final String initialValue;
-  final String label; // Add a label to describe the purpose of the dropdown
+  final String label;
 
   @override
   State<CustomDropdown> createState() => CustomDropdownState();
@@ -156,33 +156,39 @@ class CustomDropdown extends StatefulWidget {
 
 class CustomDropdownState extends State<CustomDropdown> {
   late String selectedOption;
+  late TextEditingController _searchController;
+  late bool _isDropdownOpen;
+  List<String> _filteredOptions = [];
 
   @override
   void initState() {
     super.initState();
     selectedOption = widget.initialValue;
+    _searchController = TextEditingController();
+    _isDropdownOpen = false;
+    _filteredOptions = widget.options;
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
     return Column(
       children: [
         InkWell(
           onTap: () {
-            showDropdown(context);
+            setState(() {
+              _isDropdownOpen = !_isDropdownOpen;
+            });
           },
           child: Container(
-            width: 150 * widthRatio,
-            height: 50 * heightRatio,
+            width: 150,
+            height: 50,
             decoration: BoxDecoration(
               border: Border.all(
                 color: const Color.fromARGB(255, 133, 124, 124),
                 width: 2.0,
               ),
               borderRadius: BorderRadius.circular(9.0),
-              color: Color.fromARGB(255, 128, 116, 116),
+              color: const Color.fromARGB(255, 128, 116, 116),
             ),
             child: Center(
               child: Text(
@@ -192,53 +198,58 @@ class CustomDropdownState extends State<CustomDropdown> {
             ),
           ),
         ),
+        if (_isDropdownOpen) ...[
+          SizedBox(height: 10),
+          TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              hintText: 'Search...',
+              contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            ),
+            onChanged: _onSearchTextChanged,
+          ),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 150,
+            child: ListView.builder(
+              itemCount: _filteredOptions.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(_filteredOptions[index]),
+                  onTap: () {
+                    _onOptionSelected(_filteredOptions[index]);
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ],
     );
   }
-void showDropdown(BuildContext context) {
-  final RenderBox renderBox = context.findRenderObject() as RenderBox;
-  final position = renderBox.localToGlobal(Offset.zero);
 
-  // Filter out empty values
-  final List<String> nonEmptyOptions = widget.options.where((option) => option.isNotEmpty).toList();
+  void _onSearchTextChanged(String searchText) {
+    setState(() {
+      _filteredOptions = widget.options
+          .where((option) => option.toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
+    });
+  }
 
-  final List<PopupMenuItem<String>> menuItems = nonEmptyOptions.map<PopupMenuItem<String>>((String option) {
-    return PopupMenuItem<String>(
-      value: option,
-      child: Text(option),
-    );
-  }).toList();
+  void _onOptionSelected(String option) {
+    setState(() {
+      selectedOption = option;
+      _isDropdownOpen = false;
+    });
+    widget.callback(selectedOption);
+  }
 
-  showMenu(
-    context: context,
-    position: RelativeRect.fromLTRB(position.dx + 20, position.dy + 50, position.dx + 150, position.dy + 200),
-    items: <PopupMenuEntry<String>>[ // Explicitly specify the type here
-      PopupMenuItem<String>(
-        value: 'custom_dropdown_scroll_view',
-        child: SizedBox(
-          height: 150, // Set the maximum height of the menu
-          child: SingleChildScrollView(
-            child: Column(
-              children: menuItems,
-            ),
-          ),
-        ),
-      ),
-    ],
-  ).then((value) {
-    if (value != null && value != 'custom_dropdown_header') {
-      setState(() {
-        selectedOption = value;
-      });
-      widget.callback(value);
-    }
-  });
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 }
-
-
-
-}
-
 class TextInput extends StatefulWidget {
   const TextInput({
     Key? key,
@@ -279,7 +290,7 @@ class TextInputState extends State<TextInput> {
       width: 400,
       height: 100,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 178, 178, 178),
+        color: const Color.fromARGB(255, 178, 178, 178),
         borderRadius: BorderRadius.circular(18.0),
       ),
       child: Column(
@@ -562,7 +573,7 @@ class _RedBlueToggleState extends State<RedBlueToggle> {
               color: value ? Colors.red : Colors.blue,
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
             widget.title,
             style: const TextStyle(fontSize: 20),

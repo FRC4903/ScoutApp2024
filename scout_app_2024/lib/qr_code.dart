@@ -39,7 +39,7 @@ class QRCodeWidget extends StatelessWidget {
                 size: 800,
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
                     ],
         ),
       ),

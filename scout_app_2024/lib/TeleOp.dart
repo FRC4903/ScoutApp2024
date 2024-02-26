@@ -42,22 +42,24 @@ class _TeloOpState extends State<TeloOp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                                    CheckboxInput(
+                    title: 'Defended',
+                    initial: widget.inputs['Defended'],
+                    callback: (value) => send('Defended', value),
+                  ),              const SizedBox(width: 15),
+
                   CheckboxInput(
                     title: 'Defends',
                     initial: widget.inputs['Defends'],
                     callback: (value) => send('Defends', value),
-                  ),
-                  const SizedBox(width: 20),
-                  CheckboxInput(
-                    title: 'Defended',
-                    initial: widget.inputs['Defended'],
-                    callback: (value) => send('Defended', value),
-                  ),
+                  ),              const SizedBox(width: 15),
+
                   CheckboxInput(
                     title: 'Under Stage',
                     initial: widget.inputs['UnderStage'],
                     callback: (value) => send('UnderStage', value),
-                  ),
+                  ),              const SizedBox(width: 15),
+
                 ],
               ),
               const SizedBox(height: 20),
@@ -75,22 +77,22 @@ class _TeloOpState extends State<TeloOp> {
                     value: widget.inputs['ScoringUnAmpedSpeaker'],
                     callback: (value) => send('ScoringUnAmpedSpeaker', value),
                   ),
-                  Increment(
-                    title: 'Amp Score',
-                    value: widget.inputs['ScoringAmp'],
-                    callback: (value) => send('ScoringAmp', value),
+                                    Increment(
+                    title: 'Speaker Shots',
+                    value: widget.inputs['ScoringAmplifiedSpeaker'],
+                    callback: (value) => send('ScoringAmplifiedSpeaker', value),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
-                  Increment(
-                    title: 'Speaker Shots',
-                    value: widget.inputs['ScoringAmplifiedSpeaker'],
-                    callback: (value) => send('ScoringAmplifiedSpeaker', value),
+                                    Increment(
+                    title: 'Amp Score',
+                    value: widget.inputs['ScoringAmp'],
+                    callback: (value) => send('ScoringAmp', value),
                   ),
+
                   Increment(
                     title: 'Amp Shots',
                     value: widget.inputs['ScoringUnAmpedSpeaker'],

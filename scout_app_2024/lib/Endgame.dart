@@ -20,28 +20,33 @@ class _Endgame extends State<Endgame>
     padding: const EdgeInsets.all(30.0),
     child: Stack(
       children: [
-        Column(
+        Positioned( 
+          // top:                  MediaQuery.of(context).size.height * 0.05, // Adjust the value as needed
+// ,
+                left: MediaQuery.of(context).size.width * 0.55, // Adjust the value as needed
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Row(
+              
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CheckboxInput(
                   title: 'Parked',
                   initial: widget.inputs['Parked'],
                   callback: (value) => send('Parked', value),
-                ),                SizedBox(width: 20,),
+                ),                const SizedBox(width: 5,),
 
-                const SizedBox(width: 20),
+                const SizedBox(width: 5),
                 CheckboxInput(
                   title: 'Climb',
                   initial: widget.inputs['OnStageClimb'],
                   callback: (value) => send('OnStageClimb', value),
-                )           ,     SizedBox(width: 20,),
+                )           ,     const SizedBox(width: 5,),
 
                 ]
-            ),            const SizedBox(width: 20,height: 20),
+            ),            const SizedBox(width: 20,height: 5),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -51,36 +56,36 @@ class _Endgame extends State<Endgame>
                   initial: widget.inputs['Broke'],
                   callback: (value) => send('SpotLight', value),
                 ),
-                SizedBox(width: 20,),
+                const SizedBox(width: 5,),
                 CheckboxInput(
                   title: 'Won',
                   initial: widget.inputs['Won'],
                   callback: (value) => send('Won', value),
-                ),                SizedBox(width: 20,),
+                ),                const SizedBox(width: 5,),
 
               ],
-            ),            const SizedBox(width: 20,height: 20),
+            ),            const SizedBox(width: 20,height: 5),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
 
-                const SizedBox(width: 20),
+                const SizedBox(width: 5),
                 CheckboxInput(
                   title: 'Harmony',
                   initial: widget.inputs['Harmony'],
                   callback: (value) => send('Harmony', value),
-                ),                SizedBox(width: 20,),
+                ),                const SizedBox(width: 5,),
 
                 CheckboxInput(
                   title: 'Broke',
                   initial: widget.inputs['Broke'],
                   callback: (value) => send('Broke', value),
-                ),                SizedBox(width: 20,),
+                ),                const SizedBox(width: 5,),
 
 
               ],
-            ),            const SizedBox(width: 20,height: 20),
+            ),            const SizedBox(width: 20,height: 5),
 
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -102,8 +107,9 @@ class _Endgame extends State<Endgame>
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
+        ),
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,

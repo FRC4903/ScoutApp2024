@@ -26,11 +26,11 @@ class _Endgame extends State<Endgame>
                 left: MediaQuery.of(context).size.width * 0.55, // Adjust the value as needed
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CheckboxInput(
                   title: 'Parked',
@@ -49,7 +49,7 @@ class _Endgame extends State<Endgame>
             ),            const SizedBox(width: 20,height: 5),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                CheckboxInput(
                   title: 'SpotLight',
@@ -67,7 +67,7 @@ class _Endgame extends State<Endgame>
             ),            const SizedBox(width: 20,height: 5),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
                 const SizedBox(width: 5),
@@ -122,12 +122,12 @@ class _Endgame extends State<Endgame>
             ),
             TextInput(
               title: 'Auto Comments',
-              initial: widget.inputs['ScouterName'] ?? "",
+              initial: widget.inputs['AutoComments'] ?? "",
               callback: (value) => send('AutoComments', value),
             ),
             TextInput(
               title: 'Reliability Comments',
-              initial: widget.inputs['ScouterName'] ?? "",
+              initial: widget.inputs['ReliabilityComments'] ?? "",
               callback: (value) => send('ReliabilityComments', value),
             ),
           ],

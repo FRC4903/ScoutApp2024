@@ -37,6 +37,7 @@ class _PreGameState extends State<PreGame> {
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center, // Center the row horizontally
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: 150,

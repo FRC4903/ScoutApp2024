@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'widgets.dart';
 
@@ -63,6 +65,18 @@ class _TeloOpState extends State<TeloOp> {
                 ],
               ),
               const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SliderWidget(
+                    max: 3, 
+                    divison: 3, 
+                    sliderValues: ["no defense", "bad defense", "average", "good defense"], 
+                    initialValue: 0,
+                    callback: (value) => send('DefenseScale', value))],
+               
+                  ),
+    
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

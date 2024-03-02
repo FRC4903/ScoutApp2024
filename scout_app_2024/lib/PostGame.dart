@@ -34,7 +34,7 @@ class PostGame extends StatelessWidget {
                 color: Color.fromARGB(255, 61, 60, 60), // Set background color of the box
               ),
               child: Text(
-                inputs['team']!= '' ? inputs['team']: 'u forgor',
+                inputs['team']!= '' ? inputs['team']: 'No Team',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 28,
@@ -58,8 +58,23 @@ class PostGame extends StatelessWidget {
             width: 400,
             child: MaterialButton(
               onPressed: () {
-                Phoenix.rebirth(context);
-              },
+                showDialog(context: context,
+                builder: (context) => AlertDialog(
+                  title: Text("DID YOU GET IT SCANNED?"),
+                  
+                
+                actions:[
+                  TextButton(
+                    child: Text("NO"),
+                    onPressed:() =>  Navigator.pop(context)),
+                  TextButton(
+                    child: Text("YES"),
+                    onPressed:() =>  Phoenix.rebirth(context),)
+                ]
+                )
+                );
+                // Phoenix.rebirth(context);
+            },
               color: Color.fromARGB(255, 210, 82, 23),
               shape: RoundedRectangleBorder(
                 borderRadius:

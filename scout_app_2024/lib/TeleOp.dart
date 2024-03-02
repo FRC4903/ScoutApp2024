@@ -79,15 +79,15 @@ class _TeloOpState extends State<TeloOp> {
                   ),
                                     Increment(
                     title: 'Speaker Shots',
-                    value: widget.inputs['ScoringAmplifiedSpeaker'],
-                    callback: (value) => send('ScoringAmplifiedSpeaker', value),
+                    value: widget.inputs['ShotsFired'],
+                    callback: (value) => send('ShotsFired', value),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                                    Increment(
+                    Increment(
                     title: 'Amp Score',
                     value: widget.inputs['ScoringAmp'],
                     callback: (value) => send('ScoringAmp', value),
@@ -95,9 +95,13 @@ class _TeloOpState extends State<TeloOp> {
 
                   Increment(
                     title: 'Amp Shots',
-                    value: widget.inputs['ScoringUnAmpedSpeaker'],
-                    callback: (value) => send('ScoringUnAmpedSpeaker', value),
+                    value: widget.inputs['AmpShots'],
+                    callback: (value) => send('AmpShots', value),
                   ),
+                  // DefenseScale(                   
+                    // title: 'Amp Shots',
+                    // value: widget.inputs['AmpShots'],
+                    // callback: (value) => send('DefenseScale', value),)
                 ],
               ),
             ],
@@ -108,6 +112,7 @@ class _TeloOpState extends State<TeloOp> {
   }
 
   void send(String tag, value) {
+    print(tag);
     setState(() => widget.inputs[tag] = value);
     widget.callback(widget.inputs);
   }

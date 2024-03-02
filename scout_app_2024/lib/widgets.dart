@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 typedef IntCallback = void Function(int value);
 typedef StringCallback = void Function(String value);
 typedef BoolCallback = void Function(bool value);
-
+typedef DoubleCallback = void Function(double value);
 
 const double initialScreenWidth = 1200;
 const double initialScreenHeight = 600;
@@ -200,10 +200,10 @@ class CustomDropdownState extends State<CustomDropdown> {
           ),
         ),
         if (_isDropdownOpen) ...[
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextField(
             controller: _searchController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Search...',
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
             ),
@@ -215,7 +215,7 @@ class CustomDropdownState extends State<CustomDropdown> {
               _onSearchTextChanged(value); // Update the filtered options based on the search text
             },
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           SizedBox(
             height: 150,
             child: ListView.builder(
@@ -596,5 +596,74 @@ class _RedBlueToggleState extends State<RedBlueToggle> {
       value = !value;
     });
     widget.callback(value);
+  }
+}
+
+
+class DefenseScale extends StatefulWidget {
+  final IntCallback callback;
+  final int initialValue;
+
+  const DefenseScale({required this.callback, this.initialValue = 0});
+
+  @override
+  _DefenseScaleState createState() => _DefenseScaleState();
+}
+
+class _DefenseScaleState extends State<DefenseScale> {
+  late int _value;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.initialValue;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTapUp: (details) {
+        setState(() {
+          _value = (details.localPosition.dx / 100 * 5).round();
+          _value = _value.clamp(0, 4);
+          widget.callback(_value);
+        });
+      },
+      child: Container(
+        width: 100,
+        height: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+        ),
+        child: Stack(
+          children: List.generate(5, (index) {
+            return Positioned(
+              left: index * (100 / 4),
+              child: Container(
+                width: 1,
+                height: 20,
+                color: Colors.black,
+              ),
+            );
+          }) +
+              [
+                Positioned(
+                  left: _value * ((MediaQuery.of(context).size.width - 40) / 4),
+                  top: 0,
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+        ),
+      ),
+    );
   }
 }

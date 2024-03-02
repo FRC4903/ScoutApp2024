@@ -55,7 +55,7 @@ class _AutoState extends State<Auto> {
             ),
 Positioned(
   left:  widthRatio * 0.65,
-  top: heightRatio  * 0.02,
+  top: heightRatio  * 0.16,
   child: Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,11 +78,6 @@ Positioned(
         callback: (value) => send('Taxi', value),
       ),
       const SizedBox(height: 10), // Adding padding between elements
-      CheckboxInput(
-        title: 'Preloaded',
-        initial: widget.inputs['PreLoaded'],
-        callback: (value) => send('PreLoaded', value),
-      ),
     ],
   ),
 ),

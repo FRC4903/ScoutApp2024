@@ -53,7 +53,7 @@ class _Endgame extends State<Endgame>
               children: [
                CheckboxInput(
                   title: 'SpotLight',
-                  initial: widget.inputs['Broke'],
+                  initial: widget.inputs['SpotLight'],
                   callback: (value) => send('SpotLight', value),
                 ),
                 const SizedBox(width: 5,),

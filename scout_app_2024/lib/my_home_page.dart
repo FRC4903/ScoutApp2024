@@ -23,24 +23,33 @@ var inputs = {
   'MatchNumber': "",
   'UnderStage' : false,  
   'Broke' : false,
+
+  'autoAmpScore': 0,
+  'autoSpeakerScore': 0,
   'StartPos': -1,
   'Taxi': false,
   'AutoGroundPickup': 0,
   'AutoSourcePickup': 0,
   'AutoSpeakerScore': 0,
   'AutoAmpScore': 0,
+
   'Defends': false,
   'Defended': false,
+  'DefenseScale:': 0,
   'GroundPickup': false,
   'SourcePickup': false,
+
   'ShotsFired': 0,
   'ShotsScored': 0,
+
   'ChainFit': false,
   'ScoringAmplifiedSpeaker': 0,
   'ScoringUnAmpedSpeaker': 0,
   'ScoringAmp': 0,
+  'AmpShots': 0,
   'EndgamePark': false,
   'OnstageClimb': false,
+
   'Harmony': false,
   'Trap': false,
   'SpotLight' : false,
@@ -49,9 +58,7 @@ var inputs = {
   'Parked': false,
   'OnStageClimb': false,
   'NoteInTrap': 0,
-  'autoAmpScore': 0,
-  'autoSpeakerScore': 0,
-  'PreLoaded': false,
+  
   'a': false,
   'b': false,
   'c': false,
@@ -60,6 +67,7 @@ var inputs = {
   'x': false,
   'y': false,
   'z': false,
+
   'ReliabilityComments': "",
   'AutoComments': "",
   'TeleOpComments': "",

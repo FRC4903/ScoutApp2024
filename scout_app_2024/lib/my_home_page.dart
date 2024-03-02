@@ -36,7 +36,7 @@ var inputs = {
 
   'Defends': false,
   'Defended': false,
-  'DefenseScale:': 0,
+  'DefenseScale': 0.0,
   'GroundPickup': false,
   'SourcePickup': false,
 

@@ -599,71 +599,58 @@ class _RedBlueToggleState extends State<RedBlueToggle> {
   }
 }
 
+class SliderWidget extends StatefulWidget {
+  final double max;
+  final int divison;
+  final DoubleCallback callback;
+  final double initialValue;
+  List<String> sliderValues;
 
-class DefenseScale extends StatefulWidget {
-  final IntCallback callback;
-  final int initialValue;
-
-  const DefenseScale({required this.callback, this.initialValue = 0});
+  SliderWidget({super.key, required this.max, required this.divison, required this.sliderValues, required this.callback, required this.initialValue});
 
   @override
-  _DefenseScaleState createState() => _DefenseScaleState();
+  State<SliderWidget> createState() => _SliderWidgetState();
 }
 
-class _DefenseScaleState extends State<DefenseScale> {
-  late int _value;
-
+class _SliderWidgetState extends State<SliderWidget> {
+  late double _currentSliderValue;
+  
   @override
   void initState() {
     super.initState();
-    _value = widget.initialValue;
+    _currentSliderValue = widget.initialValue;
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTapUp: (details) {
-        setState(() {
-          _value = (details.localPosition.dx / 100 * 5).round();
-          _value = _value.clamp(0, 4);
-          widget.callback(_value);
-        });
-      },
-      child: Container(
-        width: 100,
-        height: 40,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+    return Container(
+      width: 400,
+      child: SliderTheme(
+        data:  SliderTheme.of(context).copyWith(
+        trackHeight: 10,
+        activeTrackColor: Color.fromARGB(255, 51, 153, 255) ,
+        thumbColor: Color.fromARGB(255, 0, 102, 255),
+        valueIndicatorColor: Colors.black,
+        valueIndicatorTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+         ),
         ),
-        child: Stack(
-          children: List.generate(5, (index) {
-            return Positioned(
-              left: index * (100 / 4),
-              child: Container(
-                width: 1,
-                height: 20,
-                color: Colors.black,
-              ),
-            );
-          }) +
-              [
-                Positioned(
-                  left: _value * ((MediaQuery.of(context).size.width - 40) / 4),
-                  top: 0,
-                  child: Container(
-                    width: 20,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ],
+        child: Slider(
+        value: _currentSliderValue,
+        max: widget.max,
+        divisions: widget.divison,
+        label: widget.sliderValues[_currentSliderValue.toInt()],
+        
+        onChanged: (double value) {
+          setState(() {
+            _currentSliderValue = value;
+        
+            });
+            widget.callback(value);
+          },
         ),
-      ),
+      )      
     );
   }
 }

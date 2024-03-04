@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import "qr_code.dart";
-import 'package:scout_app_2024/widgets.dart';
-import 'my_home_page.dart';
 
 typedef StringCallback = void Function(String value);
 
@@ -28,15 +26,15 @@ class PostGame extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20), // Apply border radius
                 border: Border.all(
-                  color: Color.fromARGB(255, 19, 14, 106), // Change the color to your desired color
+                  color: const Color.fromARGB(255, 19, 14, 106), // Change the color to your desired color
                   width: 4, // Set border thickness
                 ),
-                color: Color.fromARGB(255, 61, 60, 60), // Set background color of the box
+                color: const Color.fromARGB(255, 61, 60, 60), // Set background color of the box
               ),
               child: Text(
                 inputs['team']!= '' ? inputs['team']: 'No Team',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 28,
                   // color: Colors.black, // Change the color to your desired color
                 ),
@@ -60,22 +58,22 @@ class PostGame extends StatelessWidget {
               onPressed: () {
                 showDialog(context: context,
                 builder: (context) => AlertDialog(
-                  title: Text("DID YOU GET IT SCANNED?"),
+                  title: const Text("DID YOU GET IT SCANNED?"),
                   
                 
                 actions:[
                   TextButton(
-                    child: Text("NO"),
+                    child: const Text("NO"),
                     onPressed:() =>  Navigator.pop(context)),
                   TextButton(
-                    child: Text("YES"),
+                    child: const Text("YES"),
                     onPressed:() =>  Phoenix.rebirth(context),)
                 ]
                 )
                 );
                 // Phoenix.rebirth(context);
             },
-              color: Color.fromARGB(255, 210, 82, 23),
+              color: const Color.fromARGB(255, 210, 82, 23),
               shape: RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.circular(20), // Adjust the radius as needed

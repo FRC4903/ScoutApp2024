@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'widgets.dart';
@@ -71,7 +70,7 @@ class _TeloOpState extends State<TeloOp> {
                   SliderWidget(
                     max: 3, 
                     divison: 3, 
-                    sliderValues: ["no defense", "bad defense", "average", "good defense"], 
+                    sliderValues: const ["no defense", "bad defense", "average", "good defense"], 
                     initialValue: widget.inputs['DefenseScale'],
                     callback: (value) => send('DefenseScale', value))],
                

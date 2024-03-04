@@ -623,15 +623,15 @@ class _SliderWidgetState extends State<SliderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 400,
       child: SliderTheme(
         data:  SliderTheme.of(context).copyWith(
         trackHeight: 10,
-        activeTrackColor: Color.fromARGB(255, 51, 153, 255) ,
-        thumbColor: Color.fromARGB(255, 0, 102, 255),
+        activeTrackColor: const Color.fromARGB(255, 51, 153, 255) ,
+        thumbColor: const Color.fromARGB(255, 0, 102, 255),
         valueIndicatorColor: Colors.black,
-        valueIndicatorTextStyle: TextStyle(
+        valueIndicatorTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 18,
          ),

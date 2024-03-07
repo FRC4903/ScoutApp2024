@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'my_home_page.dart';
+import 'TeleOp.dart';
 
 typedef IntCallback = void Function(int value);
 typedef StringCallback = void Function(String value);
@@ -7,7 +9,6 @@ typedef DoubleCallback = void Function(double value);
 
 const double initialScreenWidth = 1200;
 const double initialScreenHeight = 600;
-
 
 class NumberSquare extends StatefulWidget {
   const NumberSquare({
@@ -42,7 +43,9 @@ class _NumberSquareState extends State<NumberSquare> {
             color: Colors.black,
             width: 2.0,
           ),
-          color: _isSelected ? Colors.orange : const Color.fromARGB(112, 84, 215, 224),
+          color: _isSelected
+              ? Colors.orange
+              : const Color.fromARGB(112, 84, 215, 224),
         ),
         child: Center(
           child: Text(
@@ -67,13 +70,15 @@ class _NumberSquareState extends State<NumberSquare> {
   @override
   void initState() {
     super.initState();
-    _isSelected = widget.number == widget.startPos; // Check if the number matches the startPos
+    _isSelected = widget.number ==
+        widget.startPos; // Check if the number matches the startPos
   }
 
   @override
   void didUpdateWidget(covariant NumberSquare oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _isSelected = widget.number == widget.startPos; // Update isSelected when widget is updated
+    _isSelected = widget.number ==
+        widget.startPos; // Update isSelected when widget is updated
   }
 }
 
@@ -102,8 +107,10 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = 1;//MediaQuery.of(context).size.width / initialScreenWidth;
-    double heightRatio = 1;//MediaQuery.of(context).size.height / initialScreenHeight;
+    double widthRatio =
+        1; //MediaQuery.of(context).size.width / initialScreenWidth;
+    double heightRatio =
+        1; //MediaQuery.of(context).size.height / initialScreenHeight;
 
     return InkWell(
       onTap: _toggleValue, // Changed to _toggleValue
@@ -135,7 +142,6 @@ class OutlinedCheckboxState extends State<OutlinedCheckbox> {
     widget.callback(value); // Notify parent about the updated value
   }
 }
-
 
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown({
@@ -211,8 +217,10 @@ class CustomDropdownState extends State<CustomDropdown> {
               setState(() {
                 selectedOption = value;
               });
-              widget.callback(selectedOption); // Send the entered text in the callback
-              _onSearchTextChanged(value); // Update the filtered options based on the search text
+              widget.callback(
+                  selectedOption); // Send the entered text in the callback
+              _onSearchTextChanged(
+                  value); // Update the filtered options based on the search text
             },
           ),
           const SizedBox(height: 10),
@@ -238,7 +246,8 @@ class CustomDropdownState extends State<CustomDropdown> {
   void _onSearchTextChanged(String searchText) {
     setState(() {
       _filteredOptions = widget.options
-          .where((option) => option.toLowerCase().contains(searchText.toLowerCase()))
+          .where((option) =>
+              option.toLowerCase().contains(searchText.toLowerCase()))
           .toList();
     });
   }
@@ -291,8 +300,10 @@ class TextInputState extends State<TextInput> {
 
   @override
   Widget build(BuildContext context) {
-        double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+    double widthRatio = MediaQuery.of(context).size.width /
+        initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height /
+        initialScreenHeight; // Adjust as needed
 
     return Container(
       width: 400,
@@ -361,8 +372,10 @@ class IncrementState extends State<Increment> {
 
   @override
   Widget build(BuildContext context) {
-        double widthRatio = MediaQuery.of(context).size.width / initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height / initialScreenHeight; // Adjust as needed
+    double widthRatio = MediaQuery.of(context).size.width /
+        initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height /
+        initialScreenHeight; // Adjust as needed
 
     return Container(
       width: 240,
@@ -424,6 +437,7 @@ class IncrementState extends State<Increment> {
       value++;
     });
     widget.callback(value);
+    if (widget.title == "Unamped Speaker") {}
   }
 
   void decrement() {
@@ -436,7 +450,120 @@ class IncrementState extends State<Increment> {
   }
 }
 
+class DualIncrementer extends StatefulWidget {
+  const DualIncrementer({
+    Key? key,
+    required this.title,
+    required this.callback,
+    required this.callback2,
+    this.value = 0,
+    this.value2 = 0,
+  }) : super(key: key);
 
+  final String title;
+  final IntCallback callback;
+  final IntCallback callback2;
+  final int value;
+  final int value2;
+
+  @override
+  State<DualIncrementer> createState() => DualIncrementerState();
+}
+
+class DualIncrementerState extends State<DualIncrementer> {
+  int value = 0;
+  int value2 = 0;
+  @override
+  void initState() {
+    value = widget.value;
+    value2 = widget.value2;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double widthRatio = MediaQuery.of(context).size.width /
+        initialScreenWidth; // Adjust as needed
+    double heightRatio = MediaQuery.of(context).size.height /
+        initialScreenHeight; // Adjust as needed
+
+    return Container(
+      width: 240,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 133, 124, 124),
+        borderRadius: BorderRadius.circular(9.0),
+        border: Border.all(
+          color: Colors.black,
+          width: 2.0,
+        ),
+      ),
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // const SizedBox(height: 10),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          // const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: decrement,
+                icon: const Icon(
+                  Icons.remove_circle_outline,
+                  size: 40,
+                ),
+              ),
+              Text(
+                '$value',
+                style: const TextStyle(
+                  fontSize: 40,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: increment,
+                icon: const Icon(
+                  Icons.add_circle_outline,
+                  size: 40,
+                ),
+              ),
+            ],
+          ),
+          // const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
+
+  void increment() {
+    setState(() {
+      value++;
+      value2++;
+    });
+    widget.callback(value);
+    widget.callback2(value2);
+  }
+
+  void decrement() {
+    setState(() {
+      if (value > 0) {
+        value--;
+      }
+      if (value2 > 0) {
+        value2++;
+      }
+    });
+    widget.callback(value);
+    widget.callback2(value2);
+  }
+}
 
 class TextState extends State<TextInput> {
   String value = '';
@@ -539,8 +666,6 @@ class CheckboxInputState extends State<CheckboxInput> {
   }
 }
 
-
-
 class RedBlueToggle extends StatefulWidget {
   const RedBlueToggle({
     Key? key,
@@ -552,7 +677,6 @@ class RedBlueToggle extends StatefulWidget {
   final String title;
   final BoolCallback callback;
   final bool initial;
-
 
   @override
   State<RedBlueToggle> createState() => _RedBlueToggleState();
@@ -606,7 +730,13 @@ class SliderWidget extends StatefulWidget {
   final double initialValue;
   List<String> sliderValues;
 
-  SliderWidget({super.key, required this.max, required this.divison, required this.sliderValues, required this.callback, required this.initialValue});
+  SliderWidget(
+      {super.key,
+      required this.max,
+      required this.divison,
+      required this.sliderValues,
+      required this.callback,
+      required this.initialValue});
 
   @override
   State<SliderWidget> createState() => _SliderWidgetState();
@@ -614,7 +744,7 @@ class SliderWidget extends StatefulWidget {
 
 class _SliderWidgetState extends State<SliderWidget> {
   late double _currentSliderValue;
-  
+
   @override
   void initState() {
     super.initState();
@@ -623,34 +753,33 @@ class _SliderWidgetState extends State<SliderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      child: SliderTheme(
-        data:  SliderTheme.of(context).copyWith(
-        trackHeight: 10,
-        activeTrackColor: Color.fromARGB(255, 51, 153, 255) ,
-        thumbColor: Color.fromARGB(255, 0, 102, 255),
-        valueIndicatorColor: Colors.black,
-        valueIndicatorTextStyle: TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-         ),
-        ),
-        child: Slider(
-        value: _currentSliderValue,
-        max: widget.max,
-        divisions: widget.divison,
-        label: widget.sliderValues[_currentSliderValue.toInt()],
-        
-        onChanged: (double value) {
-          setState(() {
-            _currentSliderValue = value;
-        
-            });
-            widget.callback(value);
-          },
-        ),
-      )      
-    );
+    return SizedBox(
+        width: 400,
+        child: SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            trackHeight: 10,
+            activeTrackColor: const Color.fromARGB(255, 51, 153, 255),
+            thumbColor: const Color.fromARGB(255, 0, 102, 255),
+            valueIndicatorColor: Colors.black,
+            valueIndicatorTextStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
+          child: Slider(
+            value: _currentSliderValue,
+            max: widget.max,
+            divisions: widget.divison,
+            label: widget.sliderValues[_currentSliderValue.toInt()],
+            onChanged: (double value) {
+              setState(() {
+                _currentSliderValue = value;
+              });
+              widget.callback(value);
+            },
+          ),
+        ));
   }
 }
+
+

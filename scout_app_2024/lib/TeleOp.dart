@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'widgets.dart';
@@ -49,12 +48,7 @@ class _TeloOpState extends State<TeloOp> {
                     initial: widget.inputs['Defended'],
                     callback: (value) => send('Defended', value),
                   ),              const SizedBox(width: 15),
-
-                  CheckboxInput(
-                    title: 'Defends',
-                    initial: widget.inputs['Defends'],
-                    callback: (value) => send('Defends', value),
-                  ),              const SizedBox(width: 15),
+                  const SizedBox(width: 15),
 
                   CheckboxInput(
                     title: 'Under Stage',
@@ -71,7 +65,7 @@ class _TeloOpState extends State<TeloOp> {
                   SliderWidget(
                     max: 3, 
                     divison: 3, 
-                    sliderValues: ["no defense", "bad defense", "average", "good defense"], 
+                    sliderValues: const ["no defense", "bad defense", "average", "good defense"], 
                     initialValue: widget.inputs['DefenseScale'],
                     callback: (value) => send('DefenseScale', value))],
                
@@ -91,10 +85,10 @@ class _TeloOpState extends State<TeloOp> {
                     value: widget.inputs['ScoringUnAmpedSpeaker'],
                     callback: (value) => send('ScoringUnAmpedSpeaker', value),
                   ),
-                                    Increment(
-                    title: 'Speaker Shots',
-                    value: widget.inputs['ShotsFired'],
-                    callback: (value) => send('ShotsFired', value),
+                    Increment(
+                    title: 'Speaker Misses',
+                    value: widget.inputs['SpeakerMisses'],
+                    callback: (value) => send('SpeakerMisses', value),
                   ),
                 ],
               ),
@@ -108,14 +102,10 @@ class _TeloOpState extends State<TeloOp> {
                   ),
 
                   Increment(
-                    title: 'Amp Shots',
-                    value: widget.inputs['AmpShots'],
-                    callback: (value) => send('AmpShots', value),
+                    title: 'Amp Misses',
+                    value: widget.inputs['AmpMisses'],
+                    callback: (value) => send('AmpMisses', value),
                   ),
-                  // DefenseScale(                   
-                    // title: 'Amp Shots',
-                    // value: widget.inputs['AmpShots'],
-                    // callback: (value) => send('DefenseScale', value),)
                 ],
               ),
             ],

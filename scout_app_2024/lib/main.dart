@@ -12,6 +12,7 @@ void main() {
   //test
   // Size size = DesktopWindow.getWindowSize() as Size;
   // DesktopWindow.setWindowSize(Size(1024, 300));
+  
   runApp(
     Phoenix(child: const MyApp()));
 }

@@ -33,20 +33,18 @@ var inputs = {
   'AutoSpeakerScore': 0,
   'AutoAmpScore': 0,
 
-  'Defends': false,
   'Defended': false,
   'DefenseScale': 0.0,
   'GroundPickup': false,
   'SourcePickup': false,
-
-  'ShotsFired': 0,
-  'ShotsScored': 0,
-
   'ChainFit': false,
+
+  'SpeakerMisses': 0,
+  'AmpMisses': 0,
   'ScoringAmplifiedSpeaker': 0,
   'ScoringUnAmpedSpeaker': 0,
   'ScoringAmp': 0,
-  'AmpShots': 0,
+
   'EndgamePark': false,
   'OnstageClimb': false,
 

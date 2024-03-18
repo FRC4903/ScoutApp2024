@@ -7,7 +7,6 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 // Set the desired window size (e.g., 800x600)
 
-
 void main() {
   //test
   // Size size = DesktopWindow.getWindowSize() as Size;

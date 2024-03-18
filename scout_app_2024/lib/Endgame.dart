@@ -120,11 +120,13 @@ class _Endgame extends State<Endgame>
               initial: widget.inputs["TeleOpComments"] ?? "",
               callback: (value) => send('TeleOpComments', value),
             ),
+            SizedBox(height: 10),
             TextInput(
               title: 'Auto Comments',
               initial: widget.inputs['AutoComments'] ?? "",
               callback: (value) => send('AutoComments', value),
             ),
+            SizedBox(height: 10),
             TextInput(
               title: 'Reliability Comments',
               initial: widget.inputs['ReliabilityComments'] ?? "",

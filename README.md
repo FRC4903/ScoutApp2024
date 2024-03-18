@@ -14,3 +14,17 @@ Made by Mathew, Gurdit, Divyam, Ali
 - [x] Finish all the pages
 - [x] Make it look real nice
 - [x] Make more TODOs
+
+
+## HOW TO RUN
+1. Download the release from github
+2. Run the apk
+
+## DEPENDENCIES
+* desktop_window
+* flutter
+* flutter_pheonix
+* qr_flutter
+* flutter_launcher_icons
+* cupertino_icons
+

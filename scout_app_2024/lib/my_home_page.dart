@@ -44,7 +44,7 @@ var inputs = {
   'ScoringAmplifiedSpeaker': 0,
   'ScoringUnAmpedSpeaker': 0,
   'ScoringAmp': 0,
-
+  
   'EndgamePark': false,
   'OnstageClimb': false,
 

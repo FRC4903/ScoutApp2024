@@ -116,7 +116,6 @@ class _TeloOpState extends State<TeloOp> {
   }
 
   void send(String tag, value) {
-    print(tag);
     setState(() => widget.inputs[tag] = value);
     widget.callback(widget.inputs);
   }

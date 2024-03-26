@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'my_home_page.dart';
-import 'TeleOp.dart';
 
 typedef IntCallback = void Function(int value);
 typedef StringCallback = void Function(String value);
@@ -300,14 +298,11 @@ class TextInputState extends State<TextInput> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width /
-        initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height /
-        initialScreenHeight; // Adjust as needed
-
+    double initialScreenWidth = MediaQuery.of(context).size.width;
+    double initialScreenHeight = MediaQuery.of(context).size.height;
     return Container(
-      width: 400,
-      height: 100,
+      width: initialScreenWidth/2,
+      height: initialScreenHeight/5,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 178, 178, 178),
         borderRadius: BorderRadius.circular(18.0),
@@ -372,13 +367,12 @@ class IncrementState extends State<Increment> {
 
   @override
   Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width /
-        initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height /
-        initialScreenHeight; // Adjust as needed
+    double initialScreenWidth = MediaQuery.of(context).size.width;
+    double initialScreenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-      width: 240,
+      width: initialScreenWidth/3.3,
+      height: initialScreenHeight/5,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 133, 124, 124),
         borderRadius: BorderRadius.circular(9.0),
@@ -395,7 +389,7 @@ class IncrementState extends State<Increment> {
             widget.title,
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 20,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -450,182 +444,14 @@ class IncrementState extends State<Increment> {
   }
 }
 
-class DualIncrementer extends StatefulWidget {
-  const DualIncrementer({
-    Key? key,
-    required this.title,
-    required this.callback,
-    required this.callback2,
-    this.value = 0,
-    this.value2 = 0,
-  }) : super(key: key);
-
-  final String title;
-  final IntCallback callback;
-  final IntCallback callback2;
-  final int value;
-  final int value2;
-
-  @override
-  State<DualIncrementer> createState() => DualIncrementerState();
-}
-
-class DualIncrementerState extends State<DualIncrementer> {
-  int value = 0;
-  int value2 = 0;
-  @override
-  void initState() {
-    value = widget.value;
-    value2 = widget.value2;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    double widthRatio = MediaQuery.of(context).size.width /
-        initialScreenWidth; // Adjust as needed
-    double heightRatio = MediaQuery.of(context).size.height /
-        initialScreenHeight; // Adjust as needed
-
-    return Container(
-      width: 240,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 133, 124, 124),
-        borderRadius: BorderRadius.circular(9.0),
-        border: Border.all(
-          color: Colors.black,
-          width: 2.0,
-        ),
-      ),
-      child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // const SizedBox(height: 10),
-          Text(
-            widget.title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          // const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                onPressed: decrement,
-                icon: const Icon(
-                  Icons.remove_circle_outline,
-                  size: 40,
-                ),
-              ),
-              Text(
-                '$value',
-                style: const TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                ),
-              ),
-              IconButton(
-                onPressed: increment,
-                icon: const Icon(
-                  Icons.add_circle_outline,
-                  size: 40,
-                ),
-              ),
-            ],
-          ),
-          // const SizedBox(height: 10),
-        ],
-      ),
-    );
-  }
-
-  void increment() {
-    setState(() {
-      value++;
-      value2++;
-    });
-    widget.callback(value);
-    widget.callback2(value2);
-  }
-
-  void decrement() {
-    setState(() {
-      if (value > 0) {
-        value--;
-      }
-      if (value2 > 0) {
-        value2++;
-      }
-    });
-    widget.callback(value);
-    widget.callback2(value2);
-  }
-}
-
-class TextState extends State<TextInput> {
-  String value = '';
-  late TextEditingController textController;
-  late FocusNode focus;
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController(text: widget.initial);
-    focus = FocusNode();
-    focus.addListener(() {
-      if (!focus.hasFocus) {
-        setText();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    focus.removeListener(() {});
-    textController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 500,
-      height: 100,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 133, 124, 124),
-        borderRadius: BorderRadius.circular(9.0),
-      ),
-      child: TextField(
-        focusNode: focus,
-        controller: textController,
-        style: const TextStyle(fontSize: 20),
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: widget.title,
-          hintText: 'Enter comments here...',
-        ),
-      ),
-    );
-  }
-
-  void setText() {
-    setState(() {
-      value = textController.text;
-    });
-    widget.callback(value);
-  }
-}
 
 class CheckboxInput extends StatefulWidget {
   const CheckboxInput({
-    Key? key,
+    super.key,
     required this.title,
     required this.callback,
     this.initial = false,
-  }) : super(key: key);
+  });
 
   final String title;
   final BoolCallback callback;
@@ -646,9 +472,13 @@ class CheckboxInputState extends State<CheckboxInput> {
 
   @override
   Widget build(BuildContext context) {
+    double initialScreenWidth = MediaQuery.of(context).size.width;
+    double initialScreenHeight = MediaQuery.of(context).size.height;
     return Row(
       children: [
-        Checkbox(
+Transform.scale(
+  scale: 1.4,child:
+          Checkbox(
           value: value,
           onChanged: (newValue) {
             setState(() {
@@ -657,9 +487,10 @@ class CheckboxInputState extends State<CheckboxInput> {
             widget.callback(value);
           },
         ),
+),
         Text(
           widget.title,
-          style: const TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 23 ),
         ),
       ],
     );

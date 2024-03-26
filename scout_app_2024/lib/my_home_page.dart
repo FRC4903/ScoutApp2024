@@ -51,8 +51,6 @@ var inputs = {
   'Harmony': false,
   'Trap': false,
   'SpotLight' : false,
-  'RP': 0,
-  'Won': false,
   'Parked': false,
   'OnStageClimb': false,
   'NoteInTrap': 0,

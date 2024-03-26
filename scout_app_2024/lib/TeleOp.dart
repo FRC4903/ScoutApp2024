@@ -65,7 +65,7 @@ class _TeloOpState extends State<TeloOp> {
                   SliderWidget(
                     max: 3, 
                     divison: 3, 
-                    sliderValues: const ["no defense", "bad defense", "average", "good defense"], 
+                    sliderValues: const ["No Defense", "Bad Defense", "Average Defense", "Good Defense"], 
                     initialValue: widget.inputs['DefenseScale'],
                     callback: (value) => send('DefenseScale', value))],
                
